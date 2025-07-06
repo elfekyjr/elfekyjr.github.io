@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omar Abdulfattah - Business Analyst</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,572 +13,229 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #ffffff;
+            --background-light: #f8fafc;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            padding: 2rem 1rem;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating particles background */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 20s infinite linear;
-        }
-
-        .particle:nth-child(odd) {
-            background: rgba(52, 152, 219, 0.1);
-            animation-direction: reverse;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .container {
-            max-width: 1400px;
+        .resume-container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .resume-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 0 100px rgba(52, 152, 219, 0.1);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            animation: cardPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes cardPulse {
-            0%, 100% { transform: scale(1) translateY(0px); }
-            50% { transform: scale(1.01) translateY(-5px); }
-        }
-
-        .resume-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            border-radius: 32px;
-            z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes borderGlow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .resume-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 35px 70px rgba(0, 0, 0, 0.2),
-                0 0 150px rgba(52, 152, 219, 0.3);
         }
 
         .header {
-            background: linear-gradient(135deg, 
-                rgba(44, 62, 80, 0.9), 
-                rgba(52, 152, 219, 0.9),
-                rgba(155, 89, 182, 0.9));
-            color: white;
-            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 3rem 2rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255, 255, 255, 0.03) 10px,
-                rgba(255, 255, 255, 0.03) 20px
-            );
-            animation: slidePattern 25s linear infinite;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, 
-                rgba(255, 255, 255, 0.1) 0%, 
-                transparent 70%);
-            animation: pulseGlow 3s ease-in-out infinite;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.15"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
         }
 
-        @keyframes slidePattern {
-            0% { transform: translateX(-50px) translateY(-50px) rotate(0deg); }
-            100% { transform: translateX(50px) translateY(50px) rotate(360deg); }
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f093fb, #f5576c, #4facfe);
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
+        .header-content {
             position: relative;
-            z-index: 2;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            animation: profileFloat 6s ease-in-out infinite;
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.2),
-                0 0 60px rgba(245, 87, 108, 0.3);
-        }
-
-        @keyframes profileFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-10px) rotate(5deg); }
-            66% { transform: translateY(5px) rotate(-5deg); }
-        }
-
-        .profile-img::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotateBorder 4s linear infinite;
-        }
-
-        @keyframes rotateBorder {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .profile-img:hover {
-            transform: scale(1.2) rotate(15deg);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.3),
-                0 0 100px rgba(245, 87, 108, 0.5);
+            z-index: 1;
         }
 
         .name {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-            background: linear-gradient(45deg, #fff, #f093fb, #fff);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textShimmer 3s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes textShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .title {
-            font-size: 1.4em;
-            opacity: 0.95;
-            position: relative;
-            z-index: 2;
-            animation: titlePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { opacity: 0.95; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 30px;
-            position: relative;
-            z-index: 2;
             flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 12px 20px;
-            border-radius: 25px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: contactFloat 4s ease-in-out infinite;
-        }
-
-        .contact-item:nth-child(2) { animation-delay: 0.5s; }
-        .contact-item:nth-child(3) { animation-delay: 1s; }
-        .contact-item:nth-child(4) { animation-delay: 1.5s; }
-
-        @keyframes contactFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .contact-item i {
-            animation: iconSpin 8s linear infinite;
+            font-size: 1rem;
         }
 
-        .contact-item:hover i {
-            animation: iconBounce 0.6s ease-in-out;
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes iconSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .contact-item a:hover {
+            opacity: 0.8;
         }
 
-        @keyframes iconBounce {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.3) rotate(180deg); }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
         }
 
-        .nav-tabs {
-            display: flex;
-            background: rgba(248, 249, 250, 0.1);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(233, 236, 239, 0.2);
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .nav-tabs::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
-            animation: tabUnderline 10s linear infinite;
-        }
-
-        @keyframes tabUnderline {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .tab {
-            padding: 20px 30px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .tab:hover::before {
-            left: 100%;
-        }
-
-        .tab:hover {
-            background: rgba(233, 236, 239, 0.1);
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .tab.active {
-            color: #4facfe;
-            background: rgba(255, 255, 255, 0.1);
-            animation: tabGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes tabGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(79, 172, 254, 0.6); }
-        }
-
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #4facfe, #00f2fe);
-            animation: activeTabSlide 1s ease-out;
-        }
-
-        @keyframes activeTabSlide {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        .sidebar {
+            background: var(--background-light);
+            padding: 2rem;
+            border-right: 1px solid var(--border-color);
         }
 
         .content {
-            padding: 50px;
-            position: relative;
-        }
-
-        .content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(245, 87, 108, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-            animation: contentBg 15s ease-in-out infinite;
-        }
-
-        @keyframes contentBg {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
-
-        .tab-content {
-            display: none;
-            animation: contentSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            z-index: 2;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes contentSlideIn {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            padding: 2rem;
         }
 
         .section {
-            margin-bottom: 40px;
-            animation: sectionFadeIn 1s ease-out;
+            margin-bottom: 2.5rem;
         }
 
-        @keyframes sectionFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .section h2 {
-            color: #fff;
-            margin-bottom: 25px;
-            font-size: 2.2em;
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 15px;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: headerGlow 3s ease-in-out infinite;
+            padding-bottom: 0.5rem;
         }
 
-        @keyframes headerGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(79, 172, 254, 0.5); }
-            50% { text-shadow: 0 0 40px rgba(79, 172, 254, 0.8); }
-        }
-
-        .section h2::after {
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #4facfe, #00f2fe, #f093fb);
+            width: 3rem;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             border-radius: 2px;
-            animation: underlineExpand 2s ease-out forwards;
         }
 
-        @keyframes underlineExpand {
-            0% { width: 0%; }
-            100% { width: 80px; }
+        .summary {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            text-align: justify;
         }
 
-        .experience-item, .project-item {
-            background: rgba(248, 249, 250, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 5px solid;
-            border-image: linear-gradient(45deg, #4facfe, #00f2fe) 1;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
         }
 
-        .experience-item::before, .project-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(79, 172, 254, 0.1), transparent);
-            transition: left 0.6s;
+        .skill-category {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .experience-item:hover::before, .project-item:hover::before {
-            left: 100%;
+        .skill-category:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
-        .experience-item:hover, .project-item:hover {
-            background: rgba(248, 249, 250, 0.1);
-            transform: translateX(20px) translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.15),
-                0 0 60px rgba(79, 172, 254, 0.2);
-            border-image: linear-gradient(45deg, #f093fb, #f5576c) 1;
+        .skill-category h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .job-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 8px;
-            animation: titleTypewriter 2s steps(40) forwards;
-        }
-
-        @keyframes titleTypewriter {
-            0% { width: 0; }
-            100% { width: 100%; }
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         .company {
-            color: #4facfe;
-            font-weight: 600;
-            margin-bottom: 8px;
-            animation: companySlide 1s ease-out 0.5s forwards;
-            opacity: 0;
-        }
-
-        @keyframes companySlide {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
         }
 
         .date {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95em;
-            margin-bottom: 20px;
-            animation: dateFade 1s ease-out 1s forwards;
-            opacity: 0;
-        }
-
-        @keyframes dateFade {
-            0% { opacity: 0; }
-            100% { opacity: 0.7; }
+            background: var(--background-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
         }
 
         .achievements {
@@ -585,262 +243,398 @@
         }
 
         .achievements li {
-            margin-bottom: 12px;
-            padding-left: 30px;
             position: relative;
-            color: rgba(255, 255, 255, 0.9);
-            animation: achievementSlideIn 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .achievements li:nth-child(1) { animation-delay: 1.2s; }
-        .achievements li:nth-child(2) { animation-delay: 1.4s; }
-        .achievements li:nth-child(3) { animation-delay: 1.6s; }
-        .achievements li:nth-child(4) { animation-delay: 1.8s; }
-
-        @keyframes achievementSlideIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            100% {
-                opacity: 0.9;
-                transform: translateX(0);
-            }
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
         }
 
         .achievements li::before {
-            content: '✨';
+            content: '▸';
             position: absolute;
             left: 0;
-            color: #f093fb;
+            color: var(--accent-color);
             font-weight: bold;
-            animation: starTwinkle 2s ease-in-out infinite;
         }
 
-        @keyframes starTwinkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-            50% { transform: scale(1.2) rotate(180deg); opacity: 0.7; }
+        .education-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
         }
 
-        .skills-grid {
+        .education-item h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .certifications {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 1rem;
         }
 
-        .skill-category {
-            background: rgba(248, 249, 250, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-            animation: skillCardFloat 6s ease-in-out infinite;
+        .cert-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease;
         }
 
-        .skill-category:nth-child(2) { animation-delay: 1s; }
-        .skill-category:nth-child(3) { animation-delay: 2s; }
-        .skill-category:nth-child(4) { animation-delay: 3s; }
-
-        @keyframes skillCardFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(1deg); }
-            50% { transform: translateY(5px) rotate(-1deg); }
-            75% { transform: translateY(-5px) rotate(0.5deg); }
+        .cert-item:hover {
+            transform: translateY(-1px);
         }
 
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(79, 172, 254, 0.1), rgba(245, 87, 108, 0.1));
-            opacity: 0;
-            transition: opacity 0.5s;
+        .cert-item h4 {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
         }
 
-        .skill-category:hover::before {
-            opacity: 1;
+        .cert-item p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
         }
 
-        .skill-category:hover {
-            background: rgba(248, 249, 250, 0.1);
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.2),
-                0 0 80px rgba(79, 172, 254, 0.3);
+        .languages {
+            display: grid;
+            gap: 1rem;
         }
 
-        .skill-category h3 {
-            color: #fff;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            position: relative;
-            z-index: 2;
-        }
-
-        .skill-category h3 i {
-            margin-right: 10px;
-            animation: iconPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); color: #4facfe; }
-            50% { transform: scale(1.2); color: #f093fb; }
-        }
-
-        .skill-list {
+        .language-item {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            position: relative;
-            z-index: 2;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
-        .skill-tag {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.8), rgba(44, 62, 80, 0.8));
+        .language-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .language-level {
+            background: var(--accent-color);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            animation: tagAppear 0.8s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.8);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
-        .skill-tag:nth-child(1) { animation-delay: 0.1s; }
-        .skill-tag:nth-child(2) { animation-delay: 0.2s; }
-        .skill-tag:nth-child(3) { animation-delay: 0.3s; }
-        .skill-tag:nth-child(4) { animation-delay: 0.4s; }
-        .skill-tag:nth-child(5) { animation-delay: 0.5s; }
-        .skill-tag:nth-child(6) { animation-delay: 0.6s; }
+        .projects {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
 
-        @keyframes tagAppear {
-            0% {
-                opacity: 0;
-                transform: scale(0.8) rotate(-10deg);
+        .project-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
             }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
 
-        .skill-tag:hover::before {
-            left: 100%;
-        }
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
 
-        .skill-tag:hover {
-            transform: scale(1.1) translateY(-5px) rotate(5deg);
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);
-        }
+            .header {
+                background: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
 
-        .summary-text {
-            font-size: 1.2em;
-            line-height: 2;
-            color: rgba(255, 255, 255, 0.9);
-            background: rgba(248, 249, 250, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 35px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 5px solid;
-            border-image: linear-gradient(45deg, #4facfe, #00f2fe) 1;
-            position: relative;
-            overflow: hidden;
-            animation: summaryTypewriter 4s steps(200) forwards;
+            .section-title::after {
+                background: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
         }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Omar Abdulfattah</h1>
+                <p class="title">Business Analyst & Product Owner</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cairo, Egypt</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:oelfky@gmail.com">oelfky@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+201000649662">+20 (100) 064-9662</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/elfekyjr" target="_blank">linkedin.com/in/elfekyjr</a>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-        @keyframes summaryTypewriter {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h3 class="section-title">Core Competencies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Process Transformation</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">BPMN</span>
+                                <span class="skill-tag">Process Mapping</span>
+                                <span class="skill-tag">Requirements Elicitation</span>
+                                <span class="skill-tag">Business Case Writing</span>
+                                <span class="skill-tag">Change Management</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>User Experience & Analysis</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">UX Design</span>
+                                <span class="skill-tag">Design Thinking</span>
+                                <span class="skill-tag">User Story Mapping</span>
+                                <span class="skill-tag">UAT</span>
+                                <span class="skill-tag">Solution Design</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Leadership</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Team Management</span>
+                                <span class="skill-tag">Mentoring</span>
+                                <span class="skill-tag">Cross-functional Collaboration</span>
+                                <span class="skill-tag">Facilitation</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Technical Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Tableau</span>
+                                <span class="skill-tag">Power BI</span>
+                                <span class="skill-tag">JIRA</span>
+                                <span class="skill-tag">Azure DevOps</span>
+                                <span class="skill-tag">UML</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        .summary-text::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(79, 172, 254, 0.05), rgba(245, 87, 108, 0.05));
-            animation: summaryGlow 5s ease-in-out infinite;
-        }
+                <section class="section">
+                    <h3 class="section-title">Education</h3>
+                    <div class="education-item">
+                        <h4>Bachelor's Degree</h4>
+                        <p>Business / Commerce<br>Al-Azhar University</p>
+                    </div>
+                </section>
 
-        @keyframes summaryGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
+                <section class="section">
+                    <h3 class="section-title">Certifications</h3>
+                    <div class="certifications">
+                        <div class="cert-item">
+                            <h4>Business Analysis Foundations</h4>
+                            <p>LinkedIn Learning (2025)</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>Data Analysis Specialization</h4>
+                            <p>Coursera (2023)</p>
+                        </div>
+                        <div class="cert-item">
+                            <h4>High-Performance Habits</h4>
+                            <p>LinkedIn Learning (2021)</p>
+                        </div>
+                    </div>
+                </section>
 
-        .education-item, .cert-item {
-            background: rgba(248, 249, 250, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 20px 25px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 5px solid;
-            border-image: linear-gradient(45deg, #27ae60, #2ecc71) 1;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
+                <section class="section">
+                    <h3 class="section-title">Languages</h3>
+                    <div class="languages">
+                        <div class="language-item">
+                            <span class="language-name">Arabic</span>
+                            <span class="language-level">Native</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">English</span>
+                            <span class="language-level">Fluent</span>
+                        </div>
+                    </div>
+                </section>
+            </aside>
 
-        .education-item::before, .cert-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.1), transparent);
-            transition: left 0.6s;
-        }
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="summary">
+                        Experienced Business Analyst with 5+ years of process transformation and user experience improvement expertise. Proven track record in stakeholder relationship management, requirements elicitation, and business process optimization. Skilled in managing and mentoring team members while delivering complex projects in fast-paced environments. Expert in translating high-level business problems into actionable solutions through collaborative partnership models and change management strategies.
+                    </p>
+                </section>
 
-        .education-item:hover::before, .cert-item:hover::before {
-            left: 100%;
-        }
+                <section class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Business Analyst / Product Owner</h3>
+                                <p class="company">FlairsTech – Cairo, Egypt</p>
+                            </div>
+                            <span class="date">Aug 2023 – Present</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Led end-to-end process transformation initiatives for digital product development, collaborating with business stakeholders at all levels and challenging requirements to achieve 95% on-time delivery rate</li>
+                            <li>Developed comprehensive business cases and requirements elicitation processes, improving stakeholder alignment by 40% and reducing requirement clarification cycles by 30%</li>
+                            <li>Managed complex partnership models across multiple vendor relationships, implementing strategic "build vs buy" decisions that reduced operational costs by 20%</li>
+                            <li>Facilitated cross-functional collaboration in fast-paced environment, consistently translating high-level business problems into actionable solutions and technical specifications</li>
+                            <li>Implemented change management strategies and risk assessment frameworks, resulting in zero critical incidents during deployments and ensuring compliance with industry standards</li>
+                        </ul>
+                    </div>
 
-        .education-item:hover, .cert-item:hover {
-            background: rgba(248, 249, 250, 0.1);
-            transform: translateX(15px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-image: linear-gradient(45deg, #f093fb, #f5576c) 1;
-        }
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Technical Support Supervisor</h3>
+                                <p class="company">FlairsTech – Cairo, Egypt</p>
+                            </div>
+                            <span class="date">Oct 2021 – Aug 2023</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Managed and mentored team of 6 technical specialists, developing clear career progression paths and achieving 3 team member promotions</li>
+                            <li>Led process improvement initiatives using data-driven KPIs, improving team performance by 35% and reducing ticket volume by 40%</li>
+                            <li>Designed and implemented knowledge management system, improving user experience and reducing support requests by 25%</li>
+                            <li>Collaborated with cross-functional teams to identify process bottlenecks and implemented solutions that enhanced overall operational efficiency</li>
+                        </ul>
+                    </div>
 
-        .floating-action {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            font-size: 28px;
-            cursor: pointer;
-            box
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Technical Support Engineer</h3>
+                                <p class="company">FlairsTech – Cairo, Egypt</p>
+                            </div>
+                            <span class="date">Nov 2020 – Oct 2021</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Conducted requirements analysis and testing to ensure product functionality and adherence to business specifications</li>
+                            <li>Collaborated with stakeholders and cross-functional teams while following established business processes and quality standards</li>
+                            <li>Performed root cause analysis and provided business-focused solutions to technical problems</li>
+                            <li>Facilitated user training and knowledge transfer sessions to improve user experience and adoption rates</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Travel Advisor</h3>
+                                <p class="company">FlairsTech – Remote</p>
+                            </div>
+                            <span class="date">Jul 2020 – Nov 2020</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Managed stakeholder relationships and customer requirements analysis to deliver personalized service solutions</li>
+                            <li>Applied consultative approach to understand business needs and present suitable options to meet specific requirements</li>
+                            <li>Built and maintained strong client relationships through effective communication and collaborative problem-solving</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Key Projects</h2>
+                    <div class="projects">
+                        <div class="project-item">
+                            <h3 class="project-title">Application Modernization & Process Transformation Portfolio</h3>
+                            <p class="project-date">2023 – 2025</p>
+                            <div class="project-description">
+                                <p>Led comprehensive process transformation project for legacy system modernization, conducting stakeholder interviews and requirements elicitation to define business case and transformation strategy. Managed complex partnership model involving multiple vendors and internal teams, navigating change management challenges to deliver seamless business process improvements.</p>
+                                <br>
+                                <p>Facilitated user experience design sessions and business process mapping workshops, creating detailed workflow documentation and BPMN diagrams to support system migration. Spearheaded SharePoint migration initiative, conducting business process analysis and stakeholder collaboration to ensure minimal disruption to business operations while improving user experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
