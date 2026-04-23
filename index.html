@@ -1,351 +1,934 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Omar A. Elfeky — Business Analyst & Product Owner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0a0a0f;
-      --surface: #111118;
-      --surface2: #17171f;
-      --border: rgba(255,255,255,0.07);
-      --accent: #4fffb0;
-      --accent2: #00c9ff;
-      --accent-dim: rgba(79,255,176,0.12);
-      --white: #f0eff8;
-      --muted: #7a7990;
-      --muted2: #4a4960;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Epilogue', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; }
-    .cursor { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.1s; }
-    .cursor-trail { width: 36px; height: 36px; border: 1px solid rgba(79,255,176,0.3); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5vw; background: rgba(10,10,15,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--white); letter-spacing: -0.02em; }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cta { font-size: 0.82rem; font-weight: 500; padding: 0.5rem 1.2rem; border: 1px solid var(--accent); border-radius: 100px; color: var(--accent); text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .nav-cta:hover { background: var(--accent); color: var(--bg); }
-    .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 5vw 5rem; position: relative; overflow: hidden; }
-    .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(79,255,176,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(79,255,176,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%); }
-    .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(79,255,176,0.07) 0%, transparent 65%); top: -100px; right: -100px; pointer-events: none; }
-    .hero-glow2 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,201,255,0.06) 0%, transparent 65%); bottom: 0; left: -80px; pointer-events: none; }
-    .hero-inner { position: relative; max-width: 900px; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-dim); border: 1px solid rgba(79,255,176,0.25); border-radius: 100px; padding: 0.35rem 1rem; font-size: 0.75rem; font-weight: 500; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; }
-    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
-    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3.2rem, 8vw, 7rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; color: var(--white); margin-bottom: 0.3rem; opacity: 0; animation: fadeUp 0.7s 0.25s forwards; }
-    .hero h1 .line2 { display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .hero-subtitle { font-size: 1.05rem; line-height: 1.7; color: var(--muted); max-width: 580px; margin: 2rem 0 2.5rem; opacity: 0; animation: fadeUp 0.7s 0.45s forwards; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s 0.6s forwards; }
-    .tag { font-size: 0.78rem; padding: 0.35rem 0.9rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; color: var(--muted); transition: border-color 0.2s, color 0.2s; }
-    .tag:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.75s forwards; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--bg); padding: 0.85rem 1.8rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(79,255,176,0.25); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(79,255,176,0.4); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 100px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: border-color 0.2s, color 0.2s; }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-scroll { position: absolute; bottom: 2.5rem; left: 5vw; display: flex; align-items: center; gap: 0.7rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted2); opacity: 0; animation: fadeUp 0.7s 1s forwards; }
-    .scroll-line { width: 40px; height: 1px; background: var(--muted2); animation: scrollLine 2s ease-in-out infinite; }
-    @keyframes scrollLine { 0%,100% { width:40px; } 50% { width:20px; } }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-    .stats-bar { padding: 4rem 5vw; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    .stat-item { text-align: center; }
-    .stat-n { font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 800; color: var(--accent); line-height: 1; }
-    .stat-l { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; }
-    section { padding: 6rem 5vw; }
-    .section-label { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1.2rem; }
-    .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
-    .section-h { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.1; margin-bottom: 1rem; }
-    .section-h em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .experience { background: var(--surface); }
-    .exp-list { display: flex; flex-direction: column; gap: 0; margin-top: 3.5rem; position: relative; }
-    .exp-list::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
-    .exp-item { display: grid; grid-template-columns: 42px 1fr; gap: 1.5rem; padding-bottom: 3rem; position: relative; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
-    .exp-item.visible { opacity: 1; transform: translateY(0); }
-    .exp-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); margin-top: 0.35rem; flex-shrink: 0; position: relative; z-index: 1; transition: background 0.2s; }
-    .exp-item:hover .exp-dot { background: var(--accent); }
-    .exp-content { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; transition: border-color 0.3s; }
-    .exp-item:hover .exp-content { border-color: rgba(79,255,176,0.25); }
-    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
-    .exp-role { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); }
-    .exp-date { font-size: 0.78rem; color: var(--accent); background: var(--accent-dim); padding: 0.25rem 0.8rem; border-radius: 100px; white-space: nowrap; }
-    .exp-company { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.2rem; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .exp-bullets li { font-size: 0.88rem; line-height: 1.65; color: var(--muted); padding-left: 1.2rem; position: relative; }
-    .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 0.15rem; }
-    .skills-section { background: var(--bg); }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 3.5rem; }
-    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; transition: border-color 0.3s, transform 0.3s; }
-    .skill-card:hover { border-color: rgba(79,255,176,0.25); transform: translateY(-4px); }
-    .skill-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-    .skill-card-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; }
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .skill-pill { font-size: 0.72rem; padding: 0.25rem 0.65rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; color: var(--muted); }
-    .about-section { background: var(--surface); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3.5rem; }
-    .about-text p { font-size: 0.95rem; line-height: 1.8; color: var(--muted); margin-bottom: 1.2rem; }
-    .about-text p strong { color: var(--white); font-weight: 500; }
-    .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .fact-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; }
-    .fact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted2); margin-bottom: 0.4rem; }
-    .fact-value { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); }
-    .fact-value.accent { color: var(--accent); }
-    .certs-section { background: var(--bg); }
-    .certs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 3.5rem; }
-    .cert-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem; transition: border-color 0.2s; }
-    .cert-item:hover { border-color: rgba(79,255,176,0.2); }
-    .cert-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-    .cert-name { font-size: 0.85rem; font-weight: 500; color: var(--white); line-height: 1.4; }
-    .cert-issuer { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
-    .contact-section { background: var(--surface); text-align: center; }
-    .contact-inner { max-width: 640px; margin: 0 auto; }
-    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
-    .contact-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.6rem; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; font-size: 0.88rem; color: var(--muted); background: var(--surface2); transition: border-color 0.2s, color 0.2s, transform 0.2s; }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-    footer { padding: 2rem 5vw; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-copy { font-size: 0.78rem; color: var(--muted2); }
-    .footer-copy span { color: var(--accent); }
-    .back-top { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .back-top:hover { color: var(--accent); }
-    @media (max-width: 768px) {
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .nav-links { display: none; }
-      .hero h1 { font-size: 3rem; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Omar Elfeky — BA & Product Owner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Sentient:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#080810;
+  --ink2:#0f0f1a;
+  --ink3:#161624;
+  --glass:rgba(255,255,255,0.04);
+  --glass-b:rgba(255,255,255,0.08);
+  --line:rgba(255,255,255,0.06);
+  --line2:rgba(255,255,255,0.12);
+  --white:#eeeef5;
+  --dim:#5a5a78;
+  --dim2:#3a3a55;
+  --lime:#c8f135;
+  --lime-glow:rgba(200,241,53,0.15);
+  --blue:#4fc4f9;
+  --blue-glow:rgba(79,196,249,0.1);
+  --rose:#ff6b9d;
+  --amber:#ffb547;
+  --r:20px;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Cabinet Grotesk',sans-serif;
+  background:var(--ink);
+  color:var(--white);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ─── NOISE OVERLAY ─── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.032;
+  pointer-events:none;
+  z-index:1000;
+}
+
+/* ─── CURSOR ─── */
+#cur{
+  width:10px;height:10px;
+  background:var(--lime);
+  border-radius:50%;
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9999;
+  transition:width .2s,height .2s,background .2s;
+  mix-blend-mode:difference;
+}
+#cur2{
+  width:40px;height:40px;
+  border:1px solid rgba(200,241,53,.35);
+  border-radius:50%;
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9998;
+}
+body:has(a:hover) #cur,body:has(button:hover) #cur{width:20px;height:20px}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);
+  z-index:200;
+  display:flex;align-items:center;gap:0;
+  background:rgba(15,15,26,.75);
+  backdrop-filter:blur(24px) saturate(180%);
+  border:1px solid var(--line2);
+  border-radius:100px;
+  padding:.55rem .55rem .55rem 1.6rem;
+  box-shadow:0 8px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.n-logo{
+  font-weight:900;font-size:.95rem;letter-spacing:-.03em;
+  color:var(--white);margin-right:2rem;white-space:nowrap;
+}
+.n-logo b{color:var(--lime)}
+.n-links{display:flex;gap:.15rem}
+.n-links a{
+  text-decoration:none;font-size:.78rem;font-weight:600;
+  color:var(--dim);padding:.45rem .9rem;border-radius:100px;
+  transition:color .2s,background .2s;letter-spacing:.01em;
+}
+.n-links a:hover{color:var(--white);background:var(--glass-b)}
+.n-hire{
+  background:var(--lime);color:var(--ink);
+  font-size:.8rem;font-weight:800;
+  padding:.55rem 1.3rem;border-radius:100px;
+  text-decoration:none;margin-left:.5rem;
+  transition:transform .2s,box-shadow .2s;
+  letter-spacing:-.01em;
+}
+.n-hire:hover{transform:scale(1.04);box-shadow:0 0 28px var(--lime-glow)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7rem 5vw 4rem;
+  position:relative;overflow:hidden;
+}
+
+/* Orbs */
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(200,241,53,.07),transparent 70%);top:-200px;right:-100px}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(79,196,249,.06),transparent 70%);bottom:-100px;left:-150px}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(255,107,157,.05),transparent 70%);top:50%;right:20%}
+
+/* Grid lines bg */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black,transparent);
+}
+
+.hero-inner{position:relative;max-width:1200px;margin:0 auto;width:100%}
+
+/* Eyebrow */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-bottom:2.5rem;
+  opacity:0;animation:up .7s .1s forwards;
+}
+.eyebrow-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--lime);
+  box-shadow:0 0 12px var(--lime);
+  animation:glow 2s infinite;
+}
+@keyframes glow{0%,100%{box-shadow:0 0 12px var(--lime)}50%{box-shadow:0 0 24px var(--lime),0 0 48px var(--lime-glow)}}
+.eyebrow-text{
+  font-size:.72rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.18em;color:var(--lime);
+}
+.eyebrow-pill{
+  font-size:.7rem;font-weight:600;letter-spacing:.06em;
+  padding:.22rem .8rem;
+  background:var(--lime-glow);border:1px solid rgba(200,241,53,.2);
+  border-radius:100px;color:var(--lime);
+}
+
+/* Big headline */
+.h1-wrap{
+  margin-bottom:2rem;
+  opacity:0;animation:up .8s .25s forwards;
+}
+h1{
+  font-weight:900;
+  font-size:clamp(4rem,10vw,9.5rem);
+  line-height:.9;
+  letter-spacing:-.05em;
+  color:var(--white);
+}
+h1 .serif{
+  font-family:'Sentient',serif;
+  font-style:italic;font-weight:400;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(200,241,53,.7);
+  display:block;
+  margin-top:.15em;
+}
+h1 .serif2{
+  font-family:'Sentient',serif;
+  font-style:italic;font-weight:400;
+  color:var(--lime);
+  font-size:.55em;
+  display:block;margin-top:.2em;letter-spacing:-.02em;
+}
+
+.hero-meta{
+  display:flex;align-items:flex-start;gap:4rem;flex-wrap:wrap;
+  margin-bottom:3.5rem;
+  opacity:0;animation:up .7s .45s forwards;
+}
+.hero-bio{
+  max-width:480px;font-size:1.05rem;line-height:1.75;
+  color:var(--dim);font-weight:400;
+}
+.hero-bio strong{color:var(--white);font-weight:700}
+
+.hero-chips{
+  display:flex;flex-direction:column;gap:.5rem;
+  padding-left:2rem;border-left:1px solid var(--line2);
+}
+.chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:600;color:var(--dim);
+}
+.chip-dot{width:4px;height:4px;border-radius:50%;background:var(--lime);flex-shrink:0}
+
+.hero-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:up .7s .6s forwards;
+}
+.btn-lime{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--lime);color:var(--ink);
+  padding:.9rem 2rem;border-radius:100px;
+  text-decoration:none;font-weight:800;font-size:.92rem;
+  letter-spacing:-.01em;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 0 0 0 var(--lime-glow);
+}
+.btn-lime:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 40px var(--lime-glow)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:1px solid var(--line2);color:var(--white);
+  padding:.9rem 2rem;border-radius:100px;
+  text-decoration:none;font-weight:600;font-size:.92rem;
+  background:var(--glass);
+  transition:border-color .2s,background .2s;
+  backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{border-color:var(--line2);background:var(--glass-b)}
+
+/* Scroll indicator */
+.scroll-ind{
+  position:absolute;bottom:2.5rem;left:5vw;
+  display:flex;align-items:center;gap:.7rem;
+  opacity:0;animation:up .6s .9s forwards;
+}
+.scroll-track{
+  width:1px;height:44px;background:var(--line2);position:relative;overflow:hidden;
+}
+.scroll-thumb{
+  position:absolute;top:-100%;width:100%;height:50%;
+  background:var(--lime);
+  animation:scrollThumb 2s ease-in-out infinite;
+}
+@keyframes scrollThumb{0%{top:-50%}100%{top:150%}}
+.scroll-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim2);writing-mode:vertical-rl}
+
+@keyframes up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── BENTO STATS ─── */
+.bento-stats{
+  padding:0 5vw 5rem;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.bento-stat{
+  background:var(--ink);
+  padding:2.5rem 2rem;
+  transition:background .3s;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.bento-stat::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,var(--lime-glow),transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.bento-stat:hover{background:var(--ink2)}
+.bento-stat:hover::after{opacity:1}
+.bs-num{
+  font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;letter-spacing:-.04em;
+  color:var(--lime);line-height:1;position:relative;z-index:1;
+}
+.bs-label{font-size:.8rem;color:var(--dim);margin-top:.5rem;font-weight:500;position:relative;z-index:1}
+
+/* ─── SECTION COMMONS ─── */
+.sec{padding:6rem 5vw}
+.sec-max{max-width:1200px;margin:0 auto}
+
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.18em;color:var(--lime);margin-bottom:1rem;
+}
+.sec-eyebrow::before{content:'';width:16px;height:1px;background:var(--lime)}
+
+.sec-h{
+  font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;
+  letter-spacing:-.04em;color:var(--white);line-height:1.05;
+  margin-bottom:.5rem;
+}
+.sec-h em{
+  font-family:'Sentient',serif;font-style:italic;
+  font-weight:400;color:var(--lime);
+}
+.sec-sub{font-size:.95rem;color:var(--dim);line-height:1.7;max-width:480px}
+
+/* ─── BENTO GRID (experience) ─── */
+.exp-sec{background:var(--ink2)}
+
+.exp-bento{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:3.5rem;
+}
+@media(max-width:900px){.exp-bento{grid-template-columns:1fr}}
+
+.exp-card{
+  background:var(--ink3);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:2rem;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+  cursor:default;
+}
+.exp-card::before{
+  content:'';position:absolute;
+  inset:0;border-radius:var(--r);
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,241,53,.06),transparent 55%);
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.exp-card:hover{border-color:rgba(200,241,53,.2);transform:translateY(-3px)}
+.exp-card:hover::before{opacity:1}
+
+/* featured card */
+.exp-card.featured{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,var(--ink3) 0%,rgba(200,241,53,.03) 100%);
+}
+
+.ec-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.ec-role{
+  font-size:1.1rem;font-weight:800;color:var(--white);
+  letter-spacing:-.02em;line-height:1.2;
+}
+.ec-badge{
+  font-size:.68rem;font-weight:700;
+  padding:.28rem .8rem;border-radius:100px;
+  background:var(--lime-glow);border:1px solid rgba(200,241,53,.25);
+  color:var(--lime);white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;
+}
+.ec-badge.current{
+  background:rgba(200,241,53,.2);
+  animation:pulseBadge 2s infinite;
+}
+@keyframes pulseBadge{0%,100%{box-shadow:0 0 0 0 rgba(200,241,53,.3)}50%{box-shadow:0 0 0 6px rgba(200,241,53,0)}}
+.ec-company{
+  font-size:.82rem;color:var(--dim);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.ec-company::before{content:'↳';color:var(--lime);font-size:.75rem}
+.ec-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.ec-list li{
+  font-size:.86rem;color:var(--dim);line-height:1.6;
+  padding-left:1.1rem;position:relative;
+}
+.ec-list li::before{
+  content:'';position:absolute;left:0;top:.6rem;
+  width:4px;height:4px;border-radius:50%;background:var(--lime);
+}
+
+/* impact pills on featured card */
+.ec-impacts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.impact-pill{
+  font-size:.75rem;font-weight:700;
+  padding:.3rem .9rem;border-radius:100px;
+  background:var(--ink);border:1px solid var(--line2);
+  color:var(--white);display:flex;align-items:center;gap:.4rem;
+}
+.impact-pill b{color:var(--lime)}
+
+/* ─── SKILLS ─── */
+.skills-sec{background:var(--ink)}
+.skills-layout{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:4rem;align-items:start;
+  margin-top:3.5rem;
+}
+@media(max-width:900px){.skills-layout{grid-template-columns:1fr}}
+
+.skills-intro p{font-size:.95rem;color:var(--dim);line-height:1.75;margin-top:1rem}
+
+.skills-grid-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+@media(max-width:600px){.skills-grid-wrap{grid-template-columns:1fr}}
+
+.sk-card{
+  background:var(--ink2);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:1.6rem;
+  transition:border-color .25s,transform .25s;
+}
+.sk-card:hover{border-color:rgba(200,241,53,.2);transform:translateY(-2px)}
+.sk-icon{font-size:1.6rem;margin-bottom:.9rem}
+.sk-name{font-size:.88rem;font-weight:800;color:var(--white);margin-bottom:.8rem;letter-spacing:-.01em}
+.sk-pills{display:flex;flex-wrap:wrap;gap:.35rem}
+.sk-pill{
+  font-size:.68rem;font-weight:600;
+  padding:.22rem .65rem;background:var(--ink3);
+  border:1px solid var(--line);border-radius:100px;color:var(--dim);
+  transition:border-color .2s,color .2s;
+}
+.sk-card:hover .sk-pill{border-color:var(--line2);color:rgba(238,238,245,.6)}
+
+/* ─── ABOUT BENTO ─── */
+.about-sec{background:var(--ink2)}
+.about-bento{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  grid-template-rows:auto auto;
+  gap:1.5rem;
+  margin-top:3.5rem;
+}
+@media(max-width:900px){.about-bento{grid-template-columns:1fr}}
+
+.ab-main{
+  background:var(--ink3);border:1px solid var(--line);
+  border-radius:var(--r);padding:2.5rem;
+  grid-row:span 2;
+}
+.ab-main p{font-size:.96rem;color:var(--dim);line-height:1.8;margin-bottom:1.2rem}
+.ab-main p strong{color:var(--white);font-weight:700}
+.ab-main p:last-child{margin-bottom:0}
+
+.ab-values{margin-top:2rem;border-top:1px solid var(--line);padding-top:2rem}
+.ab-val-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--dim2);margin-bottom:1rem}
+.ab-vals{display:flex;flex-direction:column;gap:.6rem}
+.ab-val{display:flex;align-items:center;gap:.7rem;font-size:.88rem;color:var(--dim);font-weight:500}
+.ab-val::before{content:'';width:16px;height:1px;background:var(--lime);flex-shrink:0}
+
+.ab-fact{
+  background:var(--ink3);border:1px solid var(--line);
+  border-radius:var(--r);padding:1.6rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:border-color .25s;
+}
+.ab-fact:hover{border-color:rgba(200,241,53,.2)}
+.ab-fact-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--dim2)}
+.ab-fact-val{font-size:1.05rem;font-weight:800;color:var(--white);margin-top:.4rem;letter-spacing:-.02em}
+.ab-fact-val.green{color:var(--lime)}
+
+/* availability card */
+.ab-avail{
+  background:linear-gradient(135deg,rgba(200,241,53,.08) 0%,var(--ink3) 60%);
+  border:1px solid rgba(200,241,53,.2);
+}
+
+/* ─── CERTS ─── */
+.certs-sec{background:var(--ink)}
+.certs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1rem;
+  margin-top:3.5rem;
+}
+.cert-card{
+  display:flex;align-items:flex-start;gap:1rem;
+  background:var(--ink2);border:1px solid var(--line);
+  border-radius:var(--r);padding:1.4rem;
+  transition:border-color .25s,transform .25s;
+}
+.cert-card:hover{border-color:rgba(200,241,53,.2);transform:translateY(-2px)}
+.cert-ic{
+  width:40px;height:40px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  background:var(--ink3);border:1px solid var(--line);
+}
+.cert-name{font-size:.84rem;font-weight:700;color:var(--white);line-height:1.4}
+.cert-by{font-size:.72rem;color:var(--dim);margin-top:.3rem;display:flex;align-items:center;gap:.35rem}
+.cert-by::before{content:'';width:10px;height:1px;background:var(--dim2)}
+
+/* ─── CONTACT ─── */
+.contact-sec{
+  background:var(--ink2);
+  position:relative;overflow:hidden;
+}
+.contact-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.contact-orb{
+  position:absolute;width:800px;height:400px;
+  background:radial-gradient(ellipse,rgba(200,241,53,.06),transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.contact-title{
+  font-size:clamp(3rem,7vw,6rem);
+  font-weight:900;letter-spacing:-.05em;
+  color:var(--white);line-height:.95;
+  margin:1.5rem 0;
+}
+.contact-title em{
+  font-family:'Sentient',serif;font-style:italic;font-weight:400;
+  color:var(--lime);display:block;
+}
+.contact-sub{font-size:.98rem;color:var(--dim);line-height:1.7;max-width:520px;margin:0 auto 3rem}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem}
+.c-link{
+  display:inline-flex;align-items:center;gap:.65rem;
+  padding:.8rem 1.6rem;
+  background:var(--ink3);border:1px solid var(--line2);
+  border-radius:12px;text-decoration:none;
+  font-size:.85rem;font-weight:700;color:var(--white);
+  transition:border-color .2s,background .2s,transform .2s;
+}
+.c-link:hover{border-color:rgba(200,241,53,.3);background:rgba(200,241,53,.04);transform:translateY(-2px)}
+.c-link .c-icon{font-size:1.1rem}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:1.8rem 5vw;
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.f-copy{font-size:.75rem;color:var(--dim2)}
+.f-copy b{color:var(--lime)}
+.f-top{
+  font-size:.75rem;color:var(--dim);text-decoration:none;
+  display:flex;align-items:center;gap:.4rem;
+  transition:color .2s;
+}
+.f-top:hover{color:var(--lime)}
+
+/* ─── MOBILE ─── */
+@media(max-width:700px){
+  nav{top:.75rem;padding:.5rem .5rem .5rem 1.2rem}
+  .n-links{display:none}
+  h1{font-size:3.5rem}
+  .bento-stats{grid-template-columns:1fr 1fr}
+  .exp-card.featured{grid-column:1}
+  .ab-main{grid-row:auto}
+}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
+.reveal.show{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursorTrail"></div>
 
-  <nav>
-    <div class="nav-logo">Omar<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#certs">Certifications</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Contact Me</a>
-  </nav>
+<div id="cur"></div>
+<div id="cur2"></div>
 
-  <section class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-glow2"></div>
-    <div class="hero-inner">
-      <div class="hero-badge"><span class="badge-dot"></span>Open to relocation — Europe · North America · Oceania · ME</div>
-      <h1>Omar Elfeky<span class="line2">BA · Product Owner</span></h1>
-      <p class="hero-subtitle">5+ years delivering results across Canada, Australia, UAE, USA & Egypt. I turn complex requirements into products people actually use — with a track record of 95% on-time delivery and a love for distributed teams.</p>
-      <div class="hero-tags">
-        <span class="tag">Business Analysis</span>
-        <span class="tag">Product Management</span>
-        <span class="tag">Agile / Scrum</span>
-        <span class="tag">Stakeholder Management</span>
-        <span class="tag">UAT</span>
-        <span class="tag">BRD · FRD · RTM</span>
-        <span class="tag">JIRA · Azure DevOps</span>
-        <span class="tag">Power BI · Tableau</span>
-      </div>
-      <div class="hero-actions">
-        <a href="mailto:oelfky@gmail.com" class="btn-primary">✉ Get in Touch</a>
-        <a href="https://linkedin.com/in/elfekyjr" target="_blank" class="btn-outline">↗ LinkedIn</a>
-        <a href="https://elfekyjr.github.io" target="_blank" class="btn-outline">↗ GitHub</a>
-      </div>
-    </div>
-    <div class="hero-scroll"><span class="scroll-line"></span>Scroll to explore</div>
-  </section>
-
-  <div class="stats-bar">
-    <div class="stat-item"><div class="stat-n">5+</div><div class="stat-l">Years International Experience</div></div>
-    <div class="stat-item"><div class="stat-n">95%</div><div class="stat-l">On-Time Project Delivery</div></div>
-    <div class="stat-item"><div class="stat-n">40%</div><div class="stat-l">Stakeholder Alignment Boost</div></div>
-    <div class="stat-item"><div class="stat-n">20%</div><div class="stat-l">Operational Cost Reduction</div></div>
+<!-- NAV -->
+<nav>
+  <div class="n-logo">OE<b>.</b></div>
+  <div class="n-links">
+    <a href="#experience">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </div>
+  <a href="mailto:oelfky@gmail.com" class="n-hire">Hire Me ↗</a>
+</nav>
 
-  <section class="experience" id="experience">
-    <div class="section-label">Career</div>
-    <h2 class="section-h">Work <em>Experience</em></h2>
-    <p style="color:var(--muted);font-size:0.95rem;max-width:500px;">A track record built across five countries, multiple industries, and fully remote distributed teams.</p>
-    <div class="exp-list">
-      <div class="exp-item">
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-header"><span class="exp-role">Technical Support Team Lead</span><span class="exp-date">Feb 2026 – Present</span></div>
-          <div class="exp-company">Aspire Software (Contractor) — Australia</div>
-          <ul class="exp-bullets">
-            <li>Lead a distributed team of 4 support specialists across time zones, driving daily operations and performance reviews.</li>
-            <li>Oversee end-to-end customer onboarding for international clients with structured implementation plans.</li>
-            <li>Coordinate third-party integrations across multiple regions, managing timelines and API connectivity.</li>
-            <li>Primary escalation point for critical bugs — root cause analysis and cross-team resolution within SLA.</li>
-          </ul>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      <span class="eyebrow-text">Available for relocation</span>
+      <span class="eyebrow-pill">EU · NA · Oceania · ME</span>
+    </div>
+    <div class="h1-wrap">
+      <h1>
+        Omar
+        <span class="serif">Elfeky</span>
+        <span class="serif2">Business Analyst & Product Owner</span>
+      </h1>
+    </div>
+    <div class="hero-meta">
+      <p class="hero-bio">
+        <strong>5+ years</strong> delivering across Canada, Australia, UAE, USA & Egypt. Bridging the gap between complex requirements and products people love — with a proven 95% on-time delivery track record.
+      </p>
+      <div class="hero-chips">
+        <span class="chip"><span class="chip-dot"></span>Cairo, Egypt · Relocating</span>
+        <span class="chip"><span class="chip-dot"></span>Remote / Hybrid / On-site</span>
+        <span class="chip"><span class="chip-dot"></span>Arabic · English (Fluent)</span>
+        <span class="chip"><span class="chip-dot"></span>Immediately Available</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="mailto:oelfky@gmail.com" class="btn-lime">✉ Get in Touch</a>
+      <a href="https://linkedin.com/in/elfekyjr" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://elfekyjr.github.io" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="bento-stats">
+  <div class="bento-stat reveal"><div class="bs-num">5+</div><div class="bs-label">Years international experience</div></div>
+  <div class="bento-stat reveal"><div class="bs-num">95%</div><div class="bs-label">On-time project delivery</div></div>
+  <div class="bento-stat reveal"><div class="bs-num">40%</div><div class="bs-label">Stakeholder alignment boost</div></div>
+  <div class="bento-stat reveal"><div class="bs-num">20%</div><div class="bs-label">Operational cost reduction</div></div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="sec exp-sec" id="experience">
+  <div class="sec-max">
+    <div class="sec-eyebrow">Experience</div>
+    <h2 class="sec-h">Career <em>Timeline</em></h2>
+    <p class="sec-sub">Built across five countries, multiple industries, and fully distributed global teams.</p>
+
+    <div class="exp-bento">
+
+      <!-- Featured: current role -->
+      <div class="exp-card featured reveal">
+        <div class="ec-top">
+          <span class="ec-role">Technical Support Team Lead</span>
+          <span class="ec-badge current">● Current</span>
+        </div>
+        <div class="ec-company">Aspire Software (Contractor) — Australia · Feb 2026 – Present</div>
+        <ul class="ec-list">
+          <li>Lead a distributed team of 4 support specialists across time zones — daily ops, priorities & performance reviews.</li>
+          <li>Drive end-to-end customer onboarding for international clients with structured implementation plans.</li>
+          <li>Coordinate third-party API integrations across multiple regions, owning timelines and connectivity.</li>
+          <li>Primary escalation point for critical bugs — root cause analysis and cross-team resolution within SLA.</li>
+          <li>Administer server configuration, application upgrades, regression testing & UAT before production releases.</li>
+        </ul>
+        <div class="ec-impacts">
+          <span class="impact-pill"><b>↑</b> Client Satisfaction</span>
+          <span class="impact-pill"><b>✓</b> SLA Compliance</span>
+          <span class="impact-pill"><b>∞</b> Multi-Region</span>
+          <span class="impact-pill"><b>↻</b> Continuous Improvement</span>
         </div>
       </div>
-      <div class="exp-item">
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-header"><span class="exp-role">Business Analyst</span><span class="exp-date">Oct 2025 – Jan 2026</span></div>
-          <div class="exp-company">AlAsila CX — Cairo, Egypt</div>
-          <ul class="exp-bullets">
-            <li>Refined and prioritised product backlogs across multiple product lines using JIRA and Agile methodologies.</li>
-            <li>Translated stakeholder needs into user stories, acceptance criteria, BRDs and functional specs.</li>
-            <li>Facilitated workshops to define problem statements and design future-state to-be processes.</li>
-          </ul>
+
+      <!-- BA @ AlAsila -->
+      <div class="exp-card reveal">
+        <div class="ec-top">
+          <span class="ec-role">Business Analyst</span>
+          <span class="ec-badge">Oct 2025 – Jan 2026</span>
         </div>
+        <div class="ec-company">AlAsila CX — Cairo, Egypt</div>
+        <ul class="ec-list">
+          <li>Refined and prioritised product backlogs across multiple product lines in JIRA.</li>
+          <li>Translated stakeholder needs into user stories, acceptance criteria, BRDs & functional specs.</li>
+          <li>Facilitated workshops to define problem statements and design future-state processes.</li>
+        </ul>
       </div>
-      <div class="exp-item">
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-header"><span class="exp-role">Business Analyst / Product Owner</span><span class="exp-date">Jul 2024 – Sep 2025</span></div>
-          <div class="exp-company">NOVA Chemicals (via FlairsTech) — Canada (Remote)</div>
-          <ul class="exp-bullets">
-            <li>Led end-to-end requirements gathering and solution design for web application revamps with global teams.</li>
-            <li>Achieved 95% on-time delivery across multiple concurrent projects by coordinating with international stakeholders.</li>
-            <li>Reduced operational costs by 20% through build-versus-buy analysis and strategic vendor evaluation.</li>
-            <li>Requirements management framework improved stakeholder alignment by 40% and cut clarification cycles by 30%.</li>
-          </ul>
+
+      <!-- BA/PO @ NOVA -->
+      <div class="exp-card reveal">
+        <div class="ec-top">
+          <span class="ec-role">Business Analyst / Product Owner</span>
+          <span class="ec-badge">Jul 2024 – Sep 2025</span>
         </div>
+        <div class="ec-company">NOVA Chemicals (via FlairsTech) — Canada · Remote</div>
+        <ul class="ec-list">
+          <li>Led end-to-end requirements gathering, solution design & backlog prioritisation for web app revamps.</li>
+          <li><strong style="color:var(--lime)">95%</strong> on-time delivery across concurrent international projects.</li>
+          <li><strong style="color:var(--lime)">20% cost reduction</strong> through strategic build-vs-buy analysis.</li>
+          <li>Requirements framework boosted stakeholder alignment by <strong style="color:var(--lime)">40%</strong>.</li>
+        </ul>
       </div>
-      <div class="exp-item">
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-header"><span class="exp-role">Senior Implementation Consultant</span><span class="exp-date">Oct 2021 – Jan 2026</span></div>
-          <div class="exp-company">Aspire Software (via FlairsTech) — Australia (Remote)</div>
-          <ul class="exp-bullets">
-            <li>Managed end-to-end implementation for clients across Australia, Europe, and the Middle East.</li>
-            <li>Enhanced client satisfaction by 30% through cross-cultural communication and proactive issue resolution.</li>
-            <li>Aligned multicultural teams spanning multiple countries to technical implementations and business objectives.</li>
-          </ul>
+
+      <!-- Senior IC @ Aspire -->
+      <div class="exp-card reveal">
+        <div class="ec-top">
+          <span class="ec-role">Senior Implementation Consultant</span>
+          <span class="ec-badge">Oct 2021 – Jan 2026</span>
         </div>
+        <div class="ec-company">Aspire Software (via FlairsTech) — Australia · Remote</div>
+        <ul class="ec-list">
+          <li>Managed end-to-end implementations for clients across Australia, Europe & the Middle East.</li>
+          <li>Enhanced client satisfaction by <strong style="color:var(--lime)">30%</strong> through cross-cultural stakeholder engagement.</li>
+          <li>Aligned multicultural distributed teams to technical implementations and business objectives.</li>
+        </ul>
       </div>
-      <div class="exp-item">
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-header"><span class="exp-role">Business Analyst / Product Owner</span><span class="exp-date">Aug 2023 – Sep 2025</span></div>
-          <div class="exp-company">FlairsTech — Cairo, Egypt</div>
-          <ul class="exp-bullets">
-            <li>Spearheaded end-to-end digital product management with 95% on-time delivery across concurrent projects.</li>
-            <li>Delivered BRDs, FRDs, RTMs and facilitated workshops for future-state process design across departments.</li>
-            <li>Zero critical incidents during deployments via risk management strategies and KPI tracking mechanisms.</li>
-          </ul>
+
+      <!-- BA/PO @ FlairsTech -->
+      <div class="exp-card reveal">
+        <div class="ec-top">
+          <span class="ec-role">Business Analyst / Product Owner</span>
+          <span class="ec-badge">Aug 2023 – Sep 2025</span>
         </div>
+        <div class="ec-company">FlairsTech — Cairo, Egypt</div>
+        <ul class="ec-list">
+          <li>Spearheaded internal digital product management — <strong style="color:var(--lime)">95%</strong> on-time across concurrent projects.</li>
+          <li>BRDs, FRDs, RTMs + future-state workshop facilitation across all departments.</li>
+          <li>Zero critical incidents during deployments via risk management and KPI dashboards.</li>
+        </ul>
       </div>
-      <div class="exp-item">
-        <div class="exp-dot"></div>
-        <div class="exp-content">
-          <div class="exp-header"><span class="exp-role">Technical Support Supervisor</span><span class="exp-date">Oct 2021 – Aug 2023</span></div>
-          <div class="exp-company">FlairsTech — Cairo, Egypt</div>
-          <ul class="exp-bullets">
-            <li>Built and led a team of 6 specialists — achieved 40% reduction in ticket volume through workflow improvements.</li>
-            <li>Implemented data-driven KPIs and dashboards, improving overall team performance by 35%.</li>
-            <li>Knowledge management system reduced inbound requests by 25% via self-service documentation.</li>
-            <li>Mentored 3 team members to promotion with clear individual development plans.</li>
-          </ul>
+
+      <!-- Support Supervisor -->
+      <div class="exp-card reveal">
+        <div class="ec-top">
+          <span class="ec-role">Technical Support Supervisor</span>
+          <span class="ec-badge">Oct 2021 – Aug 2023</span>
+        </div>
+        <div class="ec-company">FlairsTech — Cairo, Egypt</div>
+        <ul class="ec-list">
+          <li>Built & led a team of 6 — <strong style="color:var(--lime)">40% ticket volume reduction</strong> via workflow improvements.</li>
+          <li>Data-driven KPI dashboards improved team performance by <strong style="color:var(--lime)">35%</strong>.</li>
+          <li>Knowledge management system cut inbound requests by <strong style="color:var(--lime)">25%</strong>.</li>
+          <li>Mentored 3 team members to promotion with individual development plans.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec skills-sec" id="skills">
+  <div class="sec-max">
+    <div class="skills-layout">
+      <div class="skills-intro reveal">
+        <div class="sec-eyebrow">Capabilities</div>
+        <h2 class="sec-h">Skills &<br><em>Expertise</em></h2>
+        <p>A toolkit built across real-world international projects — from enterprise product delivery to distributed team leadership and data-driven consulting.</p>
+      </div>
+      <div class="skills-grid-wrap">
+        <div class="sk-card reveal">
+          <div class="sk-icon">🔍</div>
+          <div class="sk-name">Business Analysis</div>
+          <div class="sk-pills">
+            <span class="sk-pill">Requirements Gathering</span><span class="sk-pill">User Stories</span>
+            <span class="sk-pill">BRD / FRD / RTM</span><span class="sk-pill">Gap Analysis</span>
+            <span class="sk-pill">BPMN</span><span class="sk-pill">Workshop Facilitation</span>
+            <span class="sk-pill">Use Case Dev</span>
+          </div>
+        </div>
+        <div class="sk-card reveal">
+          <div class="sk-icon">🚀</div>
+          <div class="sk-name">Product Management</div>
+          <div class="sk-pills">
+            <span class="sk-pill">Backlog Prioritisation</span><span class="sk-pill">Product Roadmap</span>
+            <span class="sk-pill">Mockup Creation</span><span class="sk-pill">A/B Testing</span>
+            <span class="sk-pill">UAT</span><span class="sk-pill">Post-Go-Live Support</span>
+            <span class="sk-pill">Release Management</span>
+          </div>
+        </div>
+        <div class="sk-card reveal">
+          <div class="sk-icon">⚡</div>
+          <div class="sk-name">Agile & Delivery</div>
+          <div class="sk-pills">
+            <span class="sk-pill">Scrum</span><span class="sk-pill">Kanban</span>
+            <span class="sk-pill">Sprint Planning</span><span class="sk-pill">Risk Management</span>
+            <span class="sk-pill">Change Management</span><span class="sk-pill">Agile Ceremonies</span>
+          </div>
+        </div>
+        <div class="sk-card reveal">
+          <div class="sk-icon">📊</div>
+          <div class="sk-name">Data & Analytics</div>
+          <div class="sk-pills">
+            <span class="sk-pill">Tableau</span><span class="sk-pill">Power BI</span>
+            <span class="sk-pill">SQL</span><span class="sk-pill">Excel Advanced</span>
+            <span class="sk-pill">KPI Dashboards</span><span class="sk-pill">Trend Analysis</span>
+          </div>
+        </div>
+        <div class="sk-card reveal">
+          <div class="sk-icon">🛠</div>
+          <div class="sk-name">Tools & Tech</div>
+          <div class="sk-pills">
+            <span class="sk-pill">JIRA</span><span class="sk-pill">Azure DevOps</span>
+            <span class="sk-pill">Confluence</span><span class="sk-pill">ServiceNow</span>
+            <span class="sk-pill">Zendesk</span><span class="sk-pill">CRM Systems</span>
+            <span class="sk-pill">MS Office Suite</span>
+          </div>
+        </div>
+        <div class="sk-card reveal">
+          <div class="sk-icon">🌍</div>
+          <div class="sk-name">Remote & International</div>
+          <div class="sk-pills">
+            <span class="sk-pill">Distributed Team Mgmt</span>
+            <span class="sk-pill">Multi-Timezone Ops</span>
+            <span class="sk-pill">Cross-Cultural Comms</span>
+            <span class="sk-pill">Remote Onboarding</span>
+            <span class="sk-pill">Global Stakeholders</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="skills-section" id="skills">
-    <div class="section-label">Capabilities</div>
-    <h2 class="section-h">Skills & <em>Expertise</em></h2>
-    <div class="skills-grid">
-      <div class="skill-card"><div class="skill-card-icon">🔍</div><div class="skill-card-title">Business Analysis</div><div class="skill-pills"><span class="skill-pill">Requirements Gathering</span><span class="skill-pill">User Stories</span><span class="skill-pill">BRD / FRD / RTM</span><span class="skill-pill">Acceptance Criteria</span><span class="skill-pill">Gap Analysis</span><span class="skill-pill">Use Cases</span><span class="skill-pill">BPMN</span><span class="skill-pill">Workshop Facilitation</span></div></div>
-      <div class="skill-card"><div class="skill-card-icon">🚀</div><div class="skill-card-title">Product Management</div><div class="skill-pills"><span class="skill-pill">Backlog Prioritisation</span><span class="skill-pill">Product Roadmap</span><span class="skill-pill">Digital Product Mgmt</span><span class="skill-pill">Mockup Creation</span><span class="skill-pill">A/B Testing</span><span class="skill-pill">UAT</span><span class="skill-pill">Post-Go-Live Support</span></div></div>
-      <div class="skill-card"><div class="skill-card-icon">⚡</div><div class="skill-card-title">Agile & Delivery</div><div class="skill-pills"><span class="skill-pill">Scrum</span><span class="skill-pill">Kanban</span><span class="skill-pill">Sprint Planning</span><span class="skill-pill">Agile Ceremonies</span><span class="skill-pill">Risk Management</span><span class="skill-pill">Release Management</span><span class="skill-pill">Change Management</span></div></div>
-      <div class="skill-card"><div class="skill-card-icon">📊</div><div class="skill-card-title">Data & Analytics</div><div class="skill-pills"><span class="skill-pill">Tableau</span><span class="skill-pill">Power BI</span><span class="skill-pill">SQL</span><span class="skill-pill">Excel (Advanced)</span><span class="skill-pill">KPI Dashboards</span><span class="skill-pill">Trend Analysis</span><span class="skill-pill">Cost-Benefit Analysis</span></div></div>
-      <div class="skill-card"><div class="skill-card-icon">🛠</div><div class="skill-card-title">Tools & Tech</div><div class="skill-pills"><span class="skill-pill">JIRA</span><span class="skill-pill">Azure DevOps</span><span class="skill-pill">Confluence</span><span class="skill-pill">ServiceNow</span><span class="skill-pill">Zendesk</span><span class="skill-pill">CRM Systems</span><span class="skill-pill">MS Office Suite</span></div></div>
-      <div class="skill-card"><div class="skill-card-icon">🌍</div><div class="skill-card-title">Remote & International</div><div class="skill-pills"><span class="skill-pill">Distributed Team Mgmt</span><span class="skill-pill">Multi-Timezone Coordination</span><span class="skill-pill">Cross-Cultural Communication</span><span class="skill-pill">Global Stakeholder Comms</span><span class="skill-pill">Remote Onboarding</span></div></div>
-    </div>
-  </section>
+<!-- ABOUT -->
+<section class="sec about-sec" id="about">
+  <div class="sec-max">
+    <div class="sec-eyebrow">About</div>
+    <h2 class="sec-h">The person <em>behind the work</em></h2>
+    <div class="about-bento">
 
-  <section class="about-section" id="about">
-    <div class="section-label">About</div>
-    <h2 class="section-h">The person <em>behind the work</em></h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a <strong>Business Analyst and Product Owner</strong> with over 5 years of international experience working with clients and companies across Canada, Australia, the UAE, the USA, and Egypt.</p>
-        <p>I thrive in distributed, multicultural teams — bridging the gap between business needs and technical delivery. My approach is rooted in listening carefully, asking the right questions, and turning complexity into clarity.</p>
-        <p>Whether it's leading workshops, writing airtight BRDs, or guiding a product from backlog to go-live, I bring <strong>structure, empathy, and follow-through</strong> to every engagement.</p>
-        <p>Currently based in Egypt, <strong>immediately available for relocation to Europe</strong> with valid documentation and full flexibility on start date.</p>
+      <div class="ab-main reveal">
+        <p>I'm a <strong>Business Analyst and Product Owner</strong> with over 5 years of international experience working across Canada, Australia, UAE, USA, and Egypt.</p>
+        <p>I thrive at the intersection of people and products — bridging business needs and technical delivery by listening carefully, asking the right questions, and turning complexity into clarity.</p>
+        <p>Whether faciliting workshops, writing airtight BRDs, or guiding a product from backlog to go-live — I bring <strong>structure, empathy, and follow-through</strong> to every engagement.</p>
+        <p>Currently based in Cairo, <strong>immediately available for relocation to Europe</strong> with full documentation and flexibility on start date.</p>
+        <div class="ab-values">
+          <div class="ab-val-title">Core Principles</div>
+          <div class="ab-vals">
+            <span class="ab-val">Clarity over complexity</span>
+            <span class="ab-val">Outcomes over output</span>
+            <span class="ab-val">People before process</span>
+            <span class="ab-val">Honest, direct communication</span>
+          </div>
+        </div>
       </div>
-      <div class="about-facts">
-        <div class="fact-card"><div class="fact-label">Location</div><div class="fact-value">Cairo, Egypt</div></div>
-        <div class="fact-card"><div class="fact-label">Availability</div><div class="fact-value accent">Immediate</div></div>
-        <div class="fact-card"><div class="fact-label">Languages</div><div class="fact-value">Arabic · English</div></div>
-        <div class="fact-card"><div class="fact-label">Relocation</div><div class="fact-value">EU · NA · Oceania · ME</div></div>
-        <div class="fact-card"><div class="fact-label">Education</div><div class="fact-value">B.Com — Al-Azhar University</div></div>
-        <div class="fact-card"><div class="fact-label">Work Style</div><div class="fact-value">Remote / Hybrid / On-site</div></div>
+
+      <div class="ab-fact ab-avail reveal">
+        <div class="ab-fact-label">Status</div>
+        <div class="ab-fact-val green">● Immediately Available</div>
       </div>
-    </div>
-  </section>
-
-  <section class="certs-section" id="certs">
-    <div class="section-label">Learning</div>
-    <h2 class="section-h">Certifications & <em>Training</em></h2>
-    <div class="certs-list">
-      <div class="cert-item"><div class="cert-icon">🎓</div><div><div class="cert-name">Product Management: Foundations & Stakeholder Collaboration</div><div class="cert-issuer">IBM · Nov 2025</div></div></div>
-      <div class="cert-item"><div class="cert-icon">🎓</div><div><div class="cert-name">Product Management: An Introduction</div><div class="cert-issuer">IBM · Oct 2025</div></div></div>
-      <div class="cert-item"><div class="cert-icon">📘</div><div><div class="cert-name">Business Analysis Foundations</div><div class="cert-issuer">LinkedIn Learning · May 2025</div></div></div>
-      <div class="cert-item"><div class="cert-icon">📊</div><div><div class="cert-name">Share Data Through the Art of Visualization</div><div class="cert-issuer">Google / Coursera · Jul 2023</div></div></div>
-      <div class="cert-item"><div class="cert-icon">📊</div><div><div class="cert-name">Analyze Data to Answer Questions</div><div class="cert-issuer">Google / Coursera · May 2023</div></div></div>
-      <div class="cert-item"><div class="cert-icon">📋</div><div><div class="cert-name">Requirements Management & Process Development</div><div class="cert-issuer">LinkedIn Learning · Apr 2023</div></div></div>
-      <div class="cert-item"><div class="cert-icon">📊</div><div><div class="cert-name">Foundations: Data, Data, Everywhere</div><div class="cert-issuer">Google Data Analytics · May 2022</div></div></div>
-      <div class="cert-item"><div class="cert-icon">⭐</div><div><div class="cert-name">The Six Morning Habits of High Performers</div><div class="cert-issuer">LinkedIn Learning · Jan 2024</div></div></div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <div class="contact-inner">
-      <div class="section-label" style="justify-content:center;">Contact</div>
-      <h2 class="section-h">Let's <em>connect</em></h2>
-      <p style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-top:1rem;">Open to BA, Product Owner, and consulting roles — remote or relocating. I'd love to hear about what you're building.</p>
-      <div class="contact-links">
-        <a href="mailto:oelfky@gmail.com" class="contact-link"><span>✉</span> oelfky@gmail.com</a>
-        <a href="tel:+201000649662" class="contact-link"><span>📞</span> +20 100 064 9662</a>
-        <a href="https://linkedin.com/in/elfekyjr" target="_blank" class="contact-link"><span>💼</span> LinkedIn</a>
-        <a href="https://elfekyjr.github.io" target="_blank" class="contact-link"><span>🐙</span> GitHub</a>
+      <div class="ab-fact reveal">
+        <div class="ab-fact-label">Based in</div>
+        <div class="ab-fact-val">Cairo, Egypt</div>
       </div>
+      <div class="ab-fact reveal">
+        <div class="ab-fact-label">Open to relocate</div>
+        <div class="ab-fact-val">EU · NA · Oceania · ME</div>
+      </div>
+      <div class="ab-fact reveal">
+        <div class="ab-fact-label">Languages</div>
+        <div class="ab-fact-val">Arabic (Native) · English (Fluent)</div>
+      </div>
+      <div class="ab-fact reveal">
+        <div class="ab-fact-label">Education</div>
+        <div class="ab-fact-val">B.Com · Al-Azhar University</div>
+      </div>
+      <div class="ab-fact reveal">
+        <div class="ab-fact-label">Work arrangement</div>
+        <div class="ab-fact-val">Remote / Hybrid / On-site</div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <span class="footer-copy">© 2026 <span>Omar A. Elfeky</span> — Built for GitHub Pages</span>
-    <a href="#" class="back-top">↑ Back to top</a>
-  </footer>
+<!-- CERTIFICATIONS -->
+<section class="sec certs-sec" id="certs">
+  <div class="sec-max">
+    <div class="sec-eyebrow">Learning</div>
+    <h2 class="sec-h">Certifications &<br><em>Training</em></h2>
+    <div class="certs-grid">
+      <div class="cert-card reveal"><div class="cert-ic">🎓</div><div><div class="cert-name">Product Management: Foundations & Stakeholder Collaboration</div><div class="cert-by">IBM · Nov 2025</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">🎓</div><div><div class="cert-name">Product Management: An Introduction</div><div class="cert-by">IBM · Oct 2025</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">📘</div><div><div class="cert-name">Business Analysis Foundations</div><div class="cert-by">LinkedIn Learning · May 2025</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">📊</div><div><div class="cert-name">Share Data Through the Art of Visualization</div><div class="cert-by">Google / Coursera · Jul 2023</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">📊</div><div><div class="cert-name">Analyze Data to Answer Questions</div><div class="cert-by">Google / Coursera · May 2023</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">📋</div><div><div class="cert-name">Requirements Management & Process Development</div><div class="cert-by">LinkedIn Learning · Apr 2023</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">📊</div><div><div class="cert-name">Foundations: Data, Data, Everywhere</div><div class="cert-by">Google Data Analytics · May 2022</div></div></div>
+      <div class="cert-card reveal"><div class="cert-ic">⭐</div><div><div class="cert-name">The Six Morning Habits of High Performers</div><div class="cert-by">LinkedIn Learning · Jan 2024</div></div></div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    const cursor = document.getElementById('cursor');
-    const trail = document.getElementById('cursorTrail');
-    let mx = 0, my = 0, tx = 0, ty = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-    });
-    function animateTrail() {
-      tx += (mx - tx) * 0.1; ty += (my - ty) * 0.1;
-      trail.style.transform = `translate(${tx - 18}px, ${ty - 18}px)`;
-      requestAnimationFrame(animateTrail);
+<!-- CONTACT -->
+<section class="sec contact-sec" id="contact">
+  <div class="contact-orb"></div>
+  <div class="contact-inner reveal">
+    <div class="sec-eyebrow" style="justify-content:center;display:inline-flex">Let's Talk</div>
+    <div class="contact-title">
+      Open to<br>
+      <em>great work</em>
+    </div>
+    <p class="contact-sub">Looking for a BA, Product Owner, or consultant? I'd love to hear what you're building. Let's see if we're a fit.</p>
+    <div class="contact-links">
+      <a href="mailto:oelfky@gmail.com" class="c-link"><span class="c-icon">✉</span>oelfky@gmail.com</a>
+      <a href="tel:+201000649662" class="c-link"><span class="c-icon">📞</span>+20 100 064 9662</a>
+      <a href="https://linkedin.com/in/elfekyjr" target="_blank" class="c-link"><span class="c-icon">💼</span>linkedin.com/in/elfekyjr</a>
+      <a href="https://elfekyjr.github.io" target="_blank" class="c-link"><span class="c-icon">🐙</span>elfekyjr.github.io</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-copy">© 2026 <b>Omar A. Elfeky</b> — Built for GitHub Pages</span>
+  <a href="#" class="f-top">↑ Back to top</a>
+</footer>
+
+<script>
+// Cursor
+const cur = document.getElementById('cur');
+const cur2 = document.getElementById('cur2');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.transform=`translate(${mx-5}px,${my-5}px)`;
+});
+(function tick(){tx+=(mx-tx)*.12;ty+=(my-ty)*.12;
+  cur2.style.transform=`translate(${tx-20}px,${ty-20}px)`;
+  requestAnimationFrame(tick);
+})();
+
+// Mouse radial on exp cards
+document.querySelectorAll('.exp-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width*100).toFixed(1)+'%';
+    const y=((e.clientY-r.top)/r.height*100).toFixed(1)+'%';
+    card.style.setProperty('--mx',x);
+    card.style.setProperty('--my',y);
+  });
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('show'),e.target.dataset.delay||0);
     }
-    animateTrail();
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.exp-item').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.08}s`;
-      observer.observe(el);
-    });
-    window.addEventListener('scroll', () => {
-      document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
-    });
-  </script>
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  // stagger siblings
+  const parent=el.parentElement;
+  const siblings=[...parent.children].filter(c=>c.classList.contains('reveal'));
+  const idx=siblings.indexOf(el);
+  el.dataset.delay=idx*70;
+  obs.observe(el);
+});
+
+// Nav shadow on scroll
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow=
+    window.scrollY>60?'0 8px 50px rgba(0,0,0,.6)':'none';
+});
+</script>
 </body>
 </html>
