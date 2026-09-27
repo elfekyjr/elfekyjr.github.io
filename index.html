@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Omar Elfeky — BA & Product Owner</title>
+<title>Omar A. Elfeky - Business Analyst & Agile Product Owner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Sentient:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
@@ -84,7 +84,7 @@ nav.scrolled{box-shadow:0 8px 50px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255
 
 .hero-inner{position:relative;max-width:1160px;margin:0 auto;width:100%}
 
-.eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:2.2rem;opacity:0;animation:up .6s .1s forwards}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:2.2rem;opacity:0;animation:up .6s .1s forwards;flex-wrap:wrap}
 .e-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:glw 2.5s infinite}
 @keyframes glw{0%,100%{box-shadow:0 0 8px var(--lime)}50%{box-shadow:0 0 20px var(--lime),0 0 40px var(--lime-dd)}}
 .e-text{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--lime)}
@@ -101,6 +101,12 @@ h1 .sub-title{
   font-family:'Sentient',serif;font-style:italic;font-weight:400;
   color:var(--lime);font-size:.46em;display:block;
   margin-top:.3em;letter-spacing:-.02em;
+  -webkit-text-stroke:0;
+}
+h1 .sub-title2{
+  font-family:'Cabinet Grotesk',sans-serif;font-style:normal;font-weight:700;
+  color:var(--dim);font-size:.22em;display:block;
+  margin-top:.8em;letter-spacing:.08em;text-transform:uppercase;
   -webkit-text-stroke:0;
 }
 
@@ -197,7 +203,7 @@ h1 .sub-title{
 .s-eye::before{content:'';width:14px;height:1px;background:var(--lime)}
 .s-h{font-size:clamp(2.1rem,4vw,3.5rem);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;margin-bottom:.6rem}
 .s-h em{font-family:'Sentient',serif;font-style:italic;font-weight:400;color:var(--lime)}
-.s-sub{font-size:1rem;color:var(--dim);line-height:1.75;max-width:480px;font-weight:400}
+.s-sub{font-size:1rem;color:var(--dim);line-height:1.75;max-width:560px;font-weight:400}
 
 /* EXPERIENCE */
 .exp-sec{background:var(--ink)}
@@ -235,6 +241,15 @@ h1 .sub-title{
 .ec-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line)}
 .ec-pill{font-size:.74rem;font-weight:600;padding:.28rem .85rem;border-radius:100px;background:var(--ink);border:1px solid var(--line2);color:var(--off);display:flex;align-items:center;gap:.35rem}
 .ec-pill b{color:var(--lime)}
+
+/* Early career compact list */
+.early-list{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.2rem}
+.early-item{background:var(--ink);border:1px solid var(--line);border-radius:var(--r2);padding:1rem 1.1rem}
+.early-role{font-size:.88rem;font-weight:800;color:var(--white)}
+.early-meta{font-size:.76rem;color:var(--dim);margin-top:.25rem;line-height:1.5}
+.early-item ul{list-style:none;margin-top:.6rem;display:flex;flex-direction:column;gap:.35rem}
+.early-item ul li{font-size:.8rem;color:var(--dim);line-height:1.55;padding-left:.9rem;position:relative}
+.early-item ul li::before{content:'';position:absolute;left:0;top:.55rem;width:3px;height:3px;border-radius:50%;background:var(--dim2)}
 
 /* SKILLS */
 .skills-sec{background:var(--ink2)}
@@ -317,7 +332,7 @@ h1 .sub-title{
 .ct-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
 .ct-big{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;letter-spacing:-.055em;color:var(--white);line-height:.9;margin:1.2rem 0 1.8rem}
 .ct-big em{font-family:'Sentient',serif;font-style:italic;font-weight:400;color:var(--lime);display:block}
-.ct-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:500px;margin:0 auto 3rem;font-weight:400}
+.ct-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:520px;margin:0 auto 3rem;font-weight:400}
 .ct-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem}
 .ct-link{display:inline-flex;align-items:center;gap:.6rem;padding:.82rem 1.6rem;background:var(--ink3);border:1.5px solid var(--line2);border-radius:var(--r2);text-decoration:none;font-size:.9rem;font-weight:700;color:var(--white);transition:border-color .2s,background .2s,transform .2s}
 .ct-link:hover{border-color:rgba(200,241,53,.35);background:rgba(200,241,53,.04);transform:translateY(-2px);color:var(--lime)}
@@ -341,6 +356,7 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
   .ab-bento{grid-template-columns:1fr}.ab-main{grid-row:auto}
   .countries-inner{grid-template-columns:1fr}
   .wid-grid{grid-template-columns:1fr}
+  .early-list{grid-template-columns:1fr}
 }
 @media(max-width:700px){
   nav{top:.7rem;padding:.45rem .45rem .45rem 1.1rem}
@@ -379,33 +395,32 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <div class="hero-inner">
     <div class="eyebrow">
       <span class="e-dot"></span>
-      <span class="e-text">Open to relocation</span>
-      <span class="e-pill">EU · NA · Oceania · ME</span>
+      <span class="e-text">Open to BA roles outside Egypt</span>
+      <span class="e-pill">Remote · Relocation</span>
     </div>
     <div class="h1-wrap">
       <h1>
-        Omar
+        Omar A.
         <span class="outline">Elfeky</span>
         <span class="sub-title">Business Analyst &amp; Product Owner</span>
+        <span class="sub-title2">Requirements · Stakeholder Management · Agile Delivery</span>
       </h1>
     </div>
     <div class="hero-row">
       <p class="hero-bio">
-        <strong>5+ years</strong> delivering results across Canada, Australia, UAE, USA &amp; Egypt.
-        I bridge the gap between complex requirements and products people love —
-        with a proven <strong>95% on-time delivery</strong> record across global teams.
+        I'm a <strong>Business Analyst with 5+ years of experience</strong> helping teams in Canada, Australia, Egypt, and the UAE turn unclear ideas into clear requirements, user stories, and roadmaps people can actually build from. I focus on shipping on time (<strong>95% on-time delivery</strong>), saving money where it makes sense (<strong>20% cost reduction</strong>), and getting everyone aligned early so there is less back and forth later.
       </p>
       <div class="hero-chips">
-        <span class="chip"><span class="chip-dot"></span>Cairo, Egypt · Relocating Now</span>
+        <span class="chip"><span class="chip-dot"></span>Egypt · Open to Remote / Relocation</span>
         <span class="chip"><span class="chip-dot"></span>Remote / Hybrid / On-site</span>
+        <span class="chip"><span class="chip-dot"></span>+20 100 064 9662</span>
         <span class="chip"><span class="chip-dot"></span>Arabic (Native) · English (Fluent)</span>
-        <span class="chip"><span class="chip-dot"></span>Immediately Available</span>
       </div>
     </div>
     <div class="hero-btns">
       <a href="mailto:oelfky@gmail.com" class="btn-lime">✉ Get in Touch</a>
-      <a href="https://linkedin.com/in/elfekyjr" target="_blank" class="btn-ghost">LinkedIn ↗</a>
-      <a href="https://elfekyjr.github.io" target="_blank" class="btn-ghost">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/elfekyjr" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://elfekyjr.github.io/" target="_blank" class="btn-ghost">Portfolio ↗</a>
     </div>
   </div>
   <div class="scroll-ind">
@@ -417,33 +432,33 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="m-item"><span>●</span> Business Analysis</span>
-    <span class="m-item"><span>●</span> Product Ownership</span>
+    <span class="m-item"><span>●</span> Requirements Gathering</span>
+    <span class="m-item"><span>●</span> Functional Specifications</span>
+    <span class="m-item"><span>●</span> User Stories &amp; Acceptance Criteria</span>
     <span class="m-item"><span>●</span> Agile / Scrum</span>
-    <span class="m-item"><span>●</span> Stakeholder Management</span>
-    <span class="m-item"><span>●</span> Workshop Facilitation</span>
-    <span class="m-item"><span>●</span> Requirements Engineering</span>
+    <span class="m-item"><span>●</span> Backlog Prioritization</span>
+    <span class="m-item"><span>●</span> Business Process Mapping</span>
     <span class="m-item"><span>●</span> UAT &amp; Go-Live</span>
     <span class="m-item"><span>●</span> Power BI · Tableau</span>
-    <span class="m-item"><span>●</span> JIRA · Azure DevOps</span>
-    <span class="m-item"><span>●</span> Distributed Team Leadership</span>
+    <span class="m-item"><span>●</span> JIRA · Confluence</span>
+    <span class="m-item"><span>●</span> Stakeholder Management</span>
     <!-- duplicate for seamless loop -->
-    <span class="m-item"><span>●</span> Business Analysis</span>
-    <span class="m-item"><span>●</span> Product Ownership</span>
+    <span class="m-item"><span>●</span> Requirements Gathering</span>
+    <span class="m-item"><span>●</span> Functional Specifications</span>
+    <span class="m-item"><span>●</span> User Stories &amp; Acceptance Criteria</span>
     <span class="m-item"><span>●</span> Agile / Scrum</span>
-    <span class="m-item"><span>●</span> Stakeholder Management</span>
-    <span class="m-item"><span>●</span> Workshop Facilitation</span>
-    <span class="m-item"><span>●</span> Requirements Engineering</span>
+    <span class="m-item"><span>●</span> Backlog Prioritization</span>
+    <span class="m-item"><span>●</span> Business Process Mapping</span>
     <span class="m-item"><span>●</span> UAT &amp; Go-Live</span>
     <span class="m-item"><span>●</span> Power BI · Tableau</span>
-    <span class="m-item"><span>●</span> JIRA · Azure DevOps</span>
-    <span class="m-item"><span>●</span> Distributed Team Leadership</span>
+    <span class="m-item"><span>●</span> JIRA · Confluence</span>
+    <span class="m-item"><span>●</span> Stakeholder Management</span>
   </div>
 </div>
 
 <!-- STATS -->
 <div class="stats-band">
-  <div class="s-cell rv"><div class="s-num" data-target="5">0</div><div class="s-lbl">Years international<br>experience</div></div>
+  <div class="s-cell rv"><div class="s-num" data-target="5">0</div><div class="s-lbl">Years translating needs<br>into delivery</div></div>
   <div class="s-cell rv"><div class="s-num" data-target="95" data-suffix="%">0</div><div class="s-lbl">On-time project<br>delivery rate</div></div>
   <div class="s-cell rv"><div class="s-num" data-target="40" data-suffix="%">0</div><div class="s-lbl">Stakeholder alignment<br>improvement</div></div>
   <div class="s-cell rv"><div class="s-num" data-target="20" data-suffix="%">0</div><div class="s-lbl">Operational cost<br>reduction achieved</div></div>
@@ -458,17 +473,17 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
       <div class="wid-card rv">
         <div class="wid-num">01</div>
         <div class="wid-title">Turn Ambiguity into Clarity</div>
-        <p class="wid-desc">I excel at taking messy, conflicting, or under-defined requirements and transforming them into structured BRDs, FRDs, and user stories that development teams can actually build from.</p>
+        <p class="wid-desc">When requirements are messy or people disagree on what is needed, that is where I do my best work. I listen, ask a lot of questions, and turn it all into clear specs, user stories, and process maps. It has helped my teams cut clarification cycles by 30%.</p>
       </div>
       <div class="wid-card rv">
         <div class="wid-num">02</div>
         <div class="wid-title">Drive Delivery Across Borders</div>
-        <p class="wid-desc">With experience managing distributed teams and clients across 5 countries and multiple time zones, I know how to keep global projects moving, aligned, and on schedule.</p>
+        <p class="wid-desc">I have worked with teams spread across Canada, Australia, Egypt, and the UAE, so I am used to different time zones and cultures. I run the Agile ceremonies, keep the backlog clean, and make sure we hit our roadmap and SLA targets. So far that has meant a 95% on-time rate.</p>
       </div>
       <div class="wid-card rv">
         <div class="wid-num">03</div>
         <div class="wid-title">Bridge Business &amp; Technology</div>
-        <p class="wid-desc">I speak both languages — stakeholder goals and technical constraints. I facilitate workshops, manage backlogs, and ensure every sprint moves toward real business value.</p>
+        <p class="wid-desc">I sit between business and tech. I help decide what to build and what to buy, check vendors, prioritize what matters most, and use simple dashboards in Tableau and Power BI so decisions are based on real data, not guesses.</p>
       </div>
     </div>
   </div>
@@ -479,98 +494,140 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <div class="smax">
     <div class="s-eye">Career</div>
     <h2 class="s-h">Work <em>Experience</em></h2>
-    <p class="s-sub">Built across five countries, multiple industries, and fully distributed global teams.</p>
+    <p class="s-sub">I have spent 5+ years working with teams in Canada, Australia, Egypt, and the UAE, with some early support work in the US too. Here is my story, most recent first.</p>
 
     <div class="exp-grid">
 
       <div class="ec wide rv">
         <div class="ec-head">
-          <span class="ec-role">Technical Support Team Lead</span>
-          <span class="ec-tag now">● Current Role</span>
+          <span class="ec-role">Customer Implementation Manager</span>
+          <span class="ec-tag now">● Feb 2026 - Present</span>
         </div>
-        <div class="ec-co">Aspire Software (Contractor) — Australia &nbsp;·&nbsp; Feb 2026 – Present</div>
+        <div class="ec-co">Aspire Software - Sydney, NSW, Australia</div>
         <ul class="ec-ul">
-          <li>Lead a geographically distributed team of 4 support specialists — daily ops, priority management &amp; performance reviews across time zones.</li>
-          <li>Drive end-to-end customer onboarding for international clients with structured implementation plans ensuring seamless transitions.</li>
-          <li>Coordinate API integrations with third-party service providers across multiple regions — owning requirements, timelines, and connectivity.</li>
-          <li>Primary escalation point for critical bugs — root cause analysis and cross-team resolution within SLA targets.</li>
-          <li>Manage server administration, application upgrades, regression testing &amp; UAT before every production release.</li>
+          <li>Lead a distributed team of <b>3 specialists</b> across time zones, driving end-to-end customer onboarding and resolving complex technical / process issues while holding delivery to <b>SLA targets</b>.</li>
         </ul>
         <div class="ec-pills">
-          <span class="ec-pill"><b>↑</b> Client Satisfaction</span>
-          <span class="ec-pill"><b>✓</b> SLA Compliance</span>
+          <span class="ec-pill"><b>👥</b> Distributed Team Leadership</span>
+          <span class="ec-pill"><b>✓</b> SLA Governance</span>
+          <span class="ec-pill"><b>↻</b> Customer Onboarding</span>
           <span class="ec-pill"><b>⌛</b> Multi-Timezone</span>
-          <span class="ec-pill"><b>↻</b> Continuous Improvement</span>
-          <span class="ec-pill"><b>⚙</b> API Integrations</span>
         </div>
       </div>
 
       <div class="ec rv">
         <div class="ec-head">
           <span class="ec-role">Business Analyst</span>
-          <span class="ec-tag">Oct 2025 – Jan 2026</span>
+          <span class="ec-tag">Oct 2025 - Jan 2026</span>
         </div>
-        <div class="ec-co">AlAsila CX — Cairo, Egypt</div>
+        <div class="ec-co">AlasilaCX - Cairo, Egypt</div>
         <ul class="ec-ul">
-          <li>Refined and prioritised product backlogs across multiple product lines using JIRA and Agile backlog management.</li>
-          <li>Translated stakeholder needs into clear user stories, acceptance criteria, BRDs &amp; functional specs.</li>
-          <li>Facilitated workshops to define problem statements and design future-state to-be processes across business units.</li>
-          <li>Coordinated with cross-functional dev teams on roadmap planning and product strategy alignment.</li>
+          <li>Refined and prioritized product backlog using <b>JIRA</b> to align with business value and customer needs.</li>
+          <li>Gathered and documented requirements for new features, translating stakeholder needs into <b>user stories and functional specifications</b>.</li>
+          <li>Coordinated with cross-functional teams on <b>roadmap planning</b>, ensuring alignment between business objectives and technical execution.</li>
         </ul>
       </div>
 
       <div class="ec rv">
         <div class="ec-head">
           <span class="ec-role">Business Analyst / Product Owner</span>
-          <span class="ec-tag">Jul 2024 – Sep 2025</span>
+          <span class="ec-tag">Jul 2024 - Sep 2025</span>
         </div>
-        <div class="ec-co">NOVA Chemicals (via FlairsTech) — Canada · Remote</div>
+        <div class="ec-co">NOVA Chemicals (Contract via FlairsTech) - Canada (Remote)</div>
         <ul class="ec-ul">
-          <li>Led end-to-end requirements gathering and solution design for web application revamps with international dev teams.</li>
-          <li>Achieved <b>95% on-time delivery</b> across multiple concurrent projects via global stakeholder coordination.</li>
-          <li>Reduced operational costs by <b>20%</b> through strategic build-versus-buy analysis and vendor evaluation.</li>
-          <li>Requirements framework boosted stakeholder alignment by <b>40%</b> and cut clarification cycles by 30%.</li>
+          <li>Led end-to-end revamping requests for company web applications: requirements gathering, solution design, mockup creation, and backlog prioritization with international development teams.</li>
+          <li>Achieved <b>95% on-time delivery</b> across multiple projects by coordinating with global stakeholders.</li>
+          <li>Reduced operational costs by <b>20%</b> through strategic build-don't-buy approach and vendor evaluation across regions.</li>
+          <li>Developed requirements management framework, enhancing stakeholder alignment by <b>40%</b> and minimizing clarification cycles by <b>30%</b>.</li>
+          <li>Facilitated Agile ceremonies and sprint planning, aligning deliverables with business goals across time zones.</li>
+        </ul>
+      </div>
+
+      <div class="ec rv">
+        <div class="ec-head">
+          <span class="ec-role">Business Analyst / Product Owner</span>
+          <span class="ec-tag">Aug 2023 - Sep 2025</span>
+        </div>
+        <div class="ec-co">FlairsTech - Cairo, Egypt</div>
+        <ul class="ec-ul">
+          <li>Led end-to-end business analysis initiatives for digital product development, achieving a <b>95% on-time delivery</b> rate across multiple projects.</li>
+          <li>Reduced operational costs by <b>20%</b> through strategic build-don't-buy approach and vendor evaluation.</li>
+          <li>Developed comprehensive requirements management framework, enhancing stakeholder alignment by <b>40%</b> and minimizing clarification cycles by <b>30%</b>.</li>
+          <li>Facilitated Agile ceremonies, backlog management, and sprint planning, aligning deliverables with business goals.</li>
+          <li>Implemented risk management strategies resulting in <b>zero critical incidents</b> during deployments.</li>
         </ul>
       </div>
 
       <div class="ec rv">
         <div class="ec-head">
           <span class="ec-role">Senior Implementation Consultant</span>
-          <span class="ec-tag">Oct 2021 – Jan 2026</span>
+          <span class="ec-tag">Oct 2021 - Sep 2025</span>
         </div>
-        <div class="ec-co">Aspire Software (via FlairsTech) — Australia · Remote</div>
+        <div class="ec-co">Aspire Software (Contract via FlairsTech) - Australia (Remote)</div>
         <ul class="ec-ul">
-          <li>Managed end-to-end software implementations for clients across Australia, Europe &amp; the Middle East.</li>
-          <li>Enhanced client satisfaction by <b>30%</b> through cross-cultural communication and proactive issue resolution.</li>
-          <li>Aligned multicultural distributed teams to technical implementations and business objectives across time zones.</li>
-        </ul>
-      </div>
-
-      <div class="ec rv">
-        <div class="ec-head">
-          <span class="ec-role">Business Analyst / Product Owner</span>
-          <span class="ec-tag">Aug 2023 – Sep 2025</span>
-        </div>
-        <div class="ec-co">FlairsTech — Cairo, Egypt</div>
-        <ul class="ec-ul">
-          <li>Spearheaded internal digital product management — <b>95% on-time</b> across all concurrent projects.</li>
-          <li>Delivered BRDs, FRDs, RTMs and facilitated future-state workshops across departments.</li>
-          <li><b>Zero critical incidents</b> during deployments via risk management strategies and KPI dashboards.</li>
+          <li>Managed implementation projects for global clients, collaborating with international teams to ensure seamless deployment across time zones.</li>
+          <li>Delivered tailored solutions, enhancing client satisfaction by <b>30%</b> through cross-cultural communication and coordination.</li>
+          <li>Provided strategic guidance to multicultural teams, aligning technical implementations with business objectives.</li>
         </ul>
       </div>
 
       <div class="ec rv">
         <div class="ec-head">
           <span class="ec-role">Technical Support Supervisor</span>
-          <span class="ec-tag">Oct 2021 – Aug 2023</span>
+          <span class="ec-tag">Oct 2021 - Aug 2023</span>
         </div>
-        <div class="ec-co">FlairsTech — Cairo, Egypt</div>
+        <div class="ec-co">FlairsTech - Cairo, Egypt</div>
         <ul class="ec-ul">
-          <li>Built &amp; led a team of 6 — achieved <b>40% ticket volume reduction</b> through workflow improvements.</li>
-          <li>Data-driven KPI dashboards improved overall team performance by <b>35%</b>.</li>
-          <li>Knowledge management system reduced inbound requests by <b>25%</b> through self-service docs.</li>
-          <li>Mentored 3 team members to promotion with clear individual development plans.</li>
+          <li>Built and led a high-performing team of <b>6 technical specialists</b>, achieving <b>40% reduction</b> in ticket volume.</li>
+          <li>Implemented data-driven KPIs improving team performance by <b>35%</b>.</li>
+          <li>Designed knowledge management system reducing support requests by <b>25%</b>.</li>
+          <li>Mentored <b>3 team members to promotion</b>, establishing clear career progression paths.</li>
         </ul>
+      </div>
+
+      <div class="ec wide rv">
+        <div class="ec-head">
+          <span class="ec-role">Earlier Career Foundation</span>
+          <span class="ec-tag">2017 - 2021</span>
+        </div>
+        <div class="ec-co">Support, service &amp; operations - Egypt · UAE · US (Remote)</div>
+        <div class="early-list">
+          <div class="early-item">
+            <div class="early-role">Technical Support Engineer</div>
+            <div class="early-meta">FlairsTech - Cairo, Egypt · Nov 2020 - Oct 2021</div>
+            <ul>
+              <li>Installed / tested products, used diagnostic tools, and escalated per SLAs; trained customers on product use.</li>
+            </ul>
+          </div>
+          <div class="early-item">
+            <div class="early-role">Travel Advisor</div>
+            <div class="early-meta">FlairsTech - Jul 2020 - Nov 2020</div>
+            <ul>
+              <li>Handled queries / complaints, matched travel options to needs, built long-term client relationships.</li>
+            </ul>
+          </div>
+          <div class="early-item">
+            <div class="early-role">Chat Support Agent</div>
+            <div class="early-meta">Etisalat - United Arab Emirates · Dec 2019 - May 2020</div>
+            <ul>
+              <li>Resolved inquiries across channels, processed orders / forms, maintained interaction records.</li>
+            </ul>
+          </div>
+          <div class="early-item">
+            <div class="early-role">Customer Complaints Handler</div>
+            <div class="early-meta">Suddenlink Communications - United States (Remote) · Apr 2019 - Aug 2019</div>
+            <ul>
+              <li>Resolved complaints, processed requests, coordinated with colleagues to ensure satisfaction.</li>
+            </ul>
+          </div>
+          <div class="early-item">
+            <div class="early-role">Technical Support Representative</div>
+            <div class="early-meta">Orange - Giza, Egypt · Jun 2017 - Sep 2017</div>
+            <ul>
+              <li>Guided customers step-by-step, documented issues in ticketing system, supported junior personnel.</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -584,41 +641,31 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
       <div>
         <div class="s-eye">Capabilities</div>
         <h2 class="s-h">Skills &amp;<br><em>Expertise</em></h2>
-        <p class="sk-intro"><p style="font-size:1rem;color:var(--dim);line-height:1.8;margin-top:1rem">A toolkit built across real-world international projects — from enterprise product delivery to distributed team leadership and data consulting.</p>
+        <p class="sk-intro"><p style="font-size:1rem;color:var(--dim);line-height:1.8;margin-top:1rem">These are the tools and habits I use every day in my BA and Product Owner work.</p>
         <div class="prof-list" id="profList">
           <div class="prof-item">
             <div class="prof-top"><span class="prof-name">Business Analysis</span><span class="prof-pct">95%</span></div>
             <div class="prof-bar"><div class="prof-fill" data-w="95"></div></div>
           </div>
           <div class="prof-item">
-            <div class="prof-top"><span class="prof-name">Product Ownership</span><span class="prof-pct">90%</span></div>
+            <div class="prof-top"><span class="prof-name">Agile Delivery</span><span class="prof-pct">90%</span></div>
             <div class="prof-bar"><div class="prof-fill" data-w="90"></div></div>
-          </div>
-          <div class="prof-item">
-            <div class="prof-top"><span class="prof-name">Agile / Scrum</span><span class="prof-pct">88%</span></div>
-            <div class="prof-bar"><div class="prof-fill" data-w="88"></div></div>
           </div>
           <div class="prof-item">
             <div class="prof-top"><span class="prof-name">Stakeholder Management</span><span class="prof-pct">92%</span></div>
             <div class="prof-bar"><div class="prof-fill" data-w="92"></div></div>
           </div>
           <div class="prof-item">
-            <div class="prof-top"><span class="prof-name">Data &amp; Analytics</span><span class="prof-pct">80%</span></div>
+            <div class="prof-top"><span class="prof-name">Data &amp; BI</span><span class="prof-pct">80%</span></div>
             <div class="prof-bar"><div class="prof-fill" data-w="80"></div></div>
-          </div>
-          <div class="prof-item">
-            <div class="prof-top"><span class="prof-name">Team Leadership</span><span class="prof-pct">85%</span></div>
-            <div class="prof-bar"><div class="prof-fill" data-w="85"></div></div>
           </div>
         </div>
       </div>
       <div class="sk-grid">
-        <div class="sk-card rv"><div class="sk-icon">🔍</div><div class="sk-name">Business Analysis</div><div class="sk-pills"><span class="sk-pill">Requirements Gathering</span><span class="sk-pill">User Stories</span><span class="sk-pill">BRD / FRD / RTM</span><span class="sk-pill">Gap Analysis</span><span class="sk-pill">BPMN</span><span class="sk-pill">Workshop Facilitation</span><span class="sk-pill">Use Case Dev</span></div></div>
-        <div class="sk-card rv"><div class="sk-icon">🚀</div><div class="sk-name">Product Management</div><div class="sk-pills"><span class="sk-pill">Backlog Prioritisation</span><span class="sk-pill">Product Roadmap</span><span class="sk-pill">Mockup Creation</span><span class="sk-pill">A/B Testing</span><span class="sk-pill">UAT</span><span class="sk-pill">Post-Go-Live</span><span class="sk-pill">Release Management</span></div></div>
-        <div class="sk-card rv"><div class="sk-icon">⚡</div><div class="sk-name">Agile &amp; Delivery</div><div class="sk-pills"><span class="sk-pill">Scrum</span><span class="sk-pill">Kanban</span><span class="sk-pill">Sprint Planning</span><span class="sk-pill">Risk Management</span><span class="sk-pill">Change Management</span><span class="sk-pill">Agile Ceremonies</span></div></div>
-        <div class="sk-card rv"><div class="sk-icon">📊</div><div class="sk-name">Data &amp; Analytics</div><div class="sk-pills"><span class="sk-pill">Tableau</span><span class="sk-pill">Power BI</span><span class="sk-pill">SQL</span><span class="sk-pill">Excel Advanced</span><span class="sk-pill">KPI Dashboards</span><span class="sk-pill">Trend Analysis</span></div></div>
-        <div class="sk-card rv"><div class="sk-icon">🛠</div><div class="sk-name">Tools &amp; Platforms</div><div class="sk-pills"><span class="sk-pill">JIRA</span><span class="sk-pill">Azure DevOps</span><span class="sk-pill">Confluence</span><span class="sk-pill">ServiceNow</span><span class="sk-pill">Zendesk</span><span class="sk-pill">CRM Systems</span></div></div>
-        <div class="sk-card rv"><div class="sk-icon">🌍</div><div class="sk-name">Remote &amp; Global</div><div class="sk-pills"><span class="sk-pill">Distributed Teams</span><span class="sk-pill">Multi-Timezone</span><span class="sk-pill">Cross-Cultural</span><span class="sk-pill">Remote Onboarding</span><span class="sk-pill">Global Stakeholders</span></div></div>
+        <div class="sk-card rv"><div class="sk-icon">🔍</div><div class="sk-name">Business Analysis</div><div class="sk-pills"><span class="sk-pill">Requirements Gathering</span><span class="sk-pill">Requirements Documentation</span><span class="sk-pill">Functional Specifications</span><span class="sk-pill">User Stories &amp; Acceptance Criteria</span><span class="sk-pill">Business Process Mapping</span><span class="sk-pill">Gap Analysis</span><span class="sk-pill">Build-vs-Buy Analysis</span><span class="sk-pill">Vendor Evaluation</span><span class="sk-pill">Risk Management</span></div></div>
+        <div class="sk-card rv"><div class="sk-icon">⚡</div><div class="sk-name">Agile Delivery</div><div class="sk-pills"><span class="sk-pill">Scrum</span><span class="sk-pill">Sprint Planning</span><span class="sk-pill">Backlog Prioritization &amp; Refinement</span><span class="sk-pill">Roadmap Planning</span><span class="sk-pill">JIRA</span><span class="sk-pill">Confluence</span><span class="sk-pill">UAT</span><span class="sk-pill">SLA Governance</span><span class="sk-pill">Cross-Functional Coordination</span></div></div>
+        <div class="sk-card rv"><div class="sk-icon">📊</div><div class="sk-name">Data &amp; BI</div><div class="sk-pills"><span class="sk-pill">Tableau</span><span class="sk-pill">Microsoft Power BI</span><span class="sk-pill">Data Visualization</span><span class="sk-pill">KPI Design &amp; Reporting</span><span class="sk-pill">Data-Driven Decision Making</span></div></div>
+        <div class="sk-card rv"><div class="sk-icon">🌍</div><div class="sk-name">Stakeholder &amp; Team Leadership</div><div class="sk-pills"><span class="sk-pill">Stakeholder Management</span><span class="sk-pill">Cross-Cultural Communication</span><span class="sk-pill">Distributed Team Leadership</span><span class="sk-pill">Mentoring</span><span class="sk-pill">Knowledge Management</span></div></div>
       </div>
     </div>
   </div>
@@ -629,17 +676,17 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <div class="countries-inner">
     <div class="countries-text rv">
       <div class="s-eye">Global Reach</div>
-      <h2 class="s-h">Delivered results<br>across <em>5 countries</em></h2>
-      <p>My career has taken me across four continents — managing clients, leading teams, and delivering projects in markedly different cultural and business environments.</p>
-      <p>This international exposure means I understand not just <strong>what to deliver</strong>, but <strong>how to communicate</strong> across cultural and organisational boundaries to make delivery actually happen.</p>
+      <h2 class="s-h">Delivered across <em>international teams</em></h2>
+      <p>I have worked with international teams across <strong>Canada, Australia, Egypt, and the UAE</strong>, with some early remote support work for US clients. I am comfortable working across time zones and cultures.</p>
+      <p>My job is to turn <strong>business goals into something tech teams can build</strong>: clear requirements, honest priorities, and a roadmap everyone understands.</p>
     </div>
     <div>
       <div class="countries-flags rv">
-        <div class="flag-card"><span class="flag-emoji">🇪🇬</span><div class="flag-info"><div class="flag-name">Egypt</div><div class="flag-role">Base · BA · Tech Lead</div></div></div>
-        <div class="flag-card"><span class="flag-emoji">🇦🇺</span><div class="flag-info"><div class="flag-name">Australia</div><div class="flag-role">Implementation · Support</div></div></div>
-        <div class="flag-card"><span class="flag-emoji">🇨🇦</span><div class="flag-info"><div class="flag-name">Canada</div><div class="flag-role">BA / Product Owner</div></div></div>
-        <div class="flag-card"><span class="flag-emoji">🇦🇪</span><div class="flag-info"><div class="flag-name">UAE</div><div class="flag-role">Chat Support · Relocate</div></div></div>
-        <div class="flag-card"><span class="flag-emoji">🇺🇸</span><div class="flag-info"><div class="flag-name">USA</div><div class="flag-role">Remote · CRM · Support</div></div></div>
+        <div class="flag-card"><span class="flag-emoji">🇪🇬</span><div class="flag-info"><div class="flag-name">Egypt</div><div class="flag-role">Base · BA / PO · Team Lead</div></div></div>
+        <div class="flag-card"><span class="flag-emoji">🇦🇺</span><div class="flag-info"><div class="flag-name">Australia</div><div class="flag-role">Sr. Implementation · Implementation Mgr</div></div></div>
+        <div class="flag-card"><span class="flag-emoji">🇨🇦</span><div class="flag-info"><div class="flag-name">Canada</div><div class="flag-role">BA / Product Owner · NOVA</div></div></div>
+        <div class="flag-card"><span class="flag-emoji">🇦🇪</span><div class="flag-info"><div class="flag-name">UAE</div><div class="flag-role">Etisalat · Chat Support Agent</div></div></div>
+        <div class="flag-card"><span class="flag-emoji">🇺🇸</span><div class="flag-info"><div class="flag-name">USA</div><div class="flag-role">Suddenlink · Remote Support</div></div></div>
       </div>
     </div>
   </div>
@@ -652,10 +699,10 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
     <h2 class="s-h">The person <em>behind the work</em></h2>
     <div class="ab-bento">
       <div class="ab-main rv">
-        <p>I'm a <strong>Business Analyst and Product Owner</strong> with over 5 years of international experience working across Canada, Australia, UAE, USA, and Egypt.</p>
-        <p>I thrive at the intersection of people and products — bridging business needs and technical delivery by listening carefully, asking the right questions, and turning complexity into clarity that teams can act on.</p>
-        <p>Whether facilitating workshops, writing airtight BRDs, or guiding a product from backlog to go-live, I bring <strong>structure, empathy, and follow-through</strong> to every engagement. I've worked with teams as small as 2 and clients as large as global enterprises.</p>
-        <p>Currently based in Cairo, I'm <strong>immediately available for relocation to Europe</strong> — with full documentation in place and full flexibility on start date.</p>
+        <p>Hi, I'm <strong>Omar A. Elfeky, a Business Analyst and Agile Product Owner</strong> with 5+ years of experience. I help stakeholders explain what they really need, then I turn that into requirements, user stories, and roadmaps.</p>
+        <p>Most of my work has been with international teams in Canada, Australia, Egypt, and the UAE. I am comfortable running Agile ceremonies, cleaning up backlogs, writing docs people actually read, and building simple dashboards in Tableau and Power BI.</p>
+        <p>What I am known for is bringing <strong>structure without making things complicated</strong>. Clear requirements, honest build-vs-buy calls, and steady follow-through. That is how my teams got to 95% on-time delivery with a lot less confusion.</p>
+        <p>I am based in Egypt and I am <strong>looking for Business Analyst roles outside Egypt, remote or relocation</strong>.</p>
         <hr class="ab-divider">
         <div class="ab-val-lbl">Core Principles</div>
         <div class="ab-vals">
@@ -666,11 +713,11 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
           <span class="ab-val">Long-term thinking over short-term wins</span>
         </div>
       </div>
-      <div class="ab-fact avail rv"><div class="ab-flbl">Status</div><div class="ab-fval lime">● Immediately Available</div></div>
-      <div class="ab-fact rv"><div class="ab-flbl">Based in</div><div class="ab-fval">Cairo, Egypt</div></div>
-      <div class="ab-fact rv"><div class="ab-flbl">Open to relocate</div><div class="ab-fval">EU · NA · Oceania · ME</div></div>
+      <div class="ab-fact avail rv"><div class="ab-flbl">Status</div><div class="ab-fval lime">● Open to work outside Egypt</div></div>
+      <div class="ab-fact rv"><div class="ab-flbl">Based in</div><div class="ab-fval">Egypt</div></div>
+      <div class="ab-fact rv"><div class="ab-flbl">Open to</div><div class="ab-fval">Remote · Relocation</div></div>
       <div class="ab-fact rv"><div class="ab-flbl">Languages</div><div class="ab-fval">Arabic (Native) · English (Fluent)</div></div>
-      <div class="ab-fact rv"><div class="ab-flbl">Education</div><div class="ab-fval">B.Com · Al-Azhar University, Cairo</div></div>
+      <div class="ab-fact rv"><div class="ab-flbl">Education</div><div class="ab-fval">Bachelor's, Business Administration and Management · Al-Azhar University, Cairo</div></div>
       <div class="ab-fact rv"><div class="ab-flbl">Work arrangement</div><div class="ab-fval">Remote / Hybrid / On-site</div></div>
     </div>
   </div>
@@ -681,15 +728,13 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <div class="smax">
     <div class="s-eye">Learning</div>
     <h2 class="s-h">Certifications &amp;<br><em>Training</em></h2>
+    <p class="s-sub">A few courses and certifications that shaped how I work.</p>
     <div class="certs-grid">
-      <div class="cert rv"><div class="cert-ic">🎓</div><div><div class="cert-n">Product Management: Foundations &amp; Stakeholder Collaboration</div><div class="cert-by">IBM · Nov 2025</div></div></div>
-      <div class="cert rv"><div class="cert-ic">🎓</div><div><div class="cert-n">Product Management: An Introduction</div><div class="cert-by">IBM · Oct 2025</div></div></div>
-      <div class="cert rv"><div class="cert-ic">📘</div><div><div class="cert-n">Business Analysis Foundations</div><div class="cert-by">LinkedIn Learning · May 2025</div></div></div>
-      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-n">Share Data Through the Art of Visualization</div><div class="cert-by">Google / Coursera · Jul 2023</div></div></div>
-      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-n">Analyze Data to Answer Questions</div><div class="cert-by">Google / Coursera · May 2023</div></div></div>
-      <div class="cert rv"><div class="cert-ic">📋</div><div><div class="cert-n">Requirements Management &amp; Process Development</div><div class="cert-by">LinkedIn Learning · Apr 2023</div></div></div>
-      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-n">Foundations: Data, Data, Everywhere</div><div class="cert-by">Google Data Analytics · May 2022</div></div></div>
-      <div class="cert rv"><div class="cert-ic">⭐</div><div><div class="cert-n">The Six Morning Habits of High Performers</div><div class="cert-by">LinkedIn Learning · Jan 2024</div></div></div>
+      <div class="cert rv"><div class="cert-ic">📘</div><div><div class="cert-n">Business Analysis Foundations</div><div class="cert-by">Business Analysis</div></div></div>
+      <div class="cert rv"><div class="cert-ic">🚀</div><div><div class="cert-n">Product Management: Initial Product Strategy and Plan</div><div class="cert-by">Product Management</div></div></div>
+      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-n">Share Data Through the Art of Visualization</div><div class="cert-by">Data Visualization</div></div></div>
+      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-n">Foundations: Data, Data, Everywhere</div><div class="cert-by">Data Analytics</div></div></div>
+      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-n">Analyze Data to Answer Questions</div><div class="cert-by">Data Analytics</div></div></div>
     </div>
   </div>
 </section>
@@ -700,12 +745,12 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
   <div class="ct-inner rv">
     <div class="s-eye" style="justify-content:center;display:inline-flex">Let's Talk</div>
     <div class="ct-big">Open to<em>great work</em></div>
-    <p class="ct-sub">Looking for a BA, Product Owner, or consultant? I'd love to hear what you're building and see if we're a fit.</p>
+    <p class="ct-sub">I am looking for Business Analyst roles outside Egypt, remote or relocation. If you are building something and need help turning ideas into a clear plan, I would love to hear from you.</p>
     <div class="ct-links">
       <a href="mailto:oelfky@gmail.com" class="ct-link">✉ oelfky@gmail.com</a>
       <a href="tel:+201000649662" class="ct-link">📞 +20 100 064 9662</a>
-      <a href="https://linkedin.com/in/elfekyjr" target="_blank" class="ct-link">💼 linkedin.com/in/elfekyjr</a>
-      <a href="https://elfekyjr.github.io" target="_blank" class="ct-link">🐙 elfekyjr.github.io</a>
+      <a href="https://www.linkedin.com/in/elfekyjr" target="_blank" class="ct-link">💼 linkedin.com/in/elfekyjr</a>
+      <a href="https://elfekyjr.github.io/" target="_blank" class="ct-link">🌐 elfekyjr.github.io</a>
     </div>
   </div>
 </section>
@@ -726,13 +771,13 @@ footer{padding:2rem 6vw;border-top:1px solid var(--line);display:flex;justify-co
 </footer>
 
 <script>
-// ── Cursor
+// - Cursor
 const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
 let mx=0,my=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-5}px,${my-5}px)`});
 (function tick(){tx+=(mx-tx)*.1;ty+=(my-ty)*.1;cur2.style.transform=`translate(${tx-19}px,${ty-19}px)`;requestAnimationFrame(tick)})();
 
-// ── Nav active link + scroll shadow
+// - Nav active link + scroll shadow
 const sections=document.querySelectorAll('section[id],div[id]');
 const navLinks=document.querySelectorAll('.n-links a');
 const nav=document.getElementById('nav');
@@ -750,7 +795,7 @@ window.addEventListener('scroll',()=>{
   });
 },{passive:true});
 
-// ── Mouse glow on exp cards
+// - Mouse glow on exp cards
 document.querySelectorAll('.ec').forEach(c=>{
   c.addEventListener('mousemove',e=>{
     const r=c.getBoundingClientRect();
@@ -759,7 +804,7 @@ document.querySelectorAll('.ec').forEach(c=>{
   });
 });
 
-// ── Scroll reveal + counter + prof bars
+// - Scroll reveal + counter + prof bars
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
