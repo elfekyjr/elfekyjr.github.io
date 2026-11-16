@@ -26,11 +26,11 @@
   h1, h2, h3, p, figure { margin: 0; }
   a { color: inherit; text-underline-offset: .22em; }
   a:hover { color: var(--accent); }
-  a:focus-visible, button:focus-visible { outline: 3px solid #aed4ff; outline-offset: 4px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #aed4ff; outline-offset: 4px; }
   section[id] { scroll-margin-top: 2rem; }
   .wrap { width: min(1120px, calc(100% - 3rem)); margin-inline: auto; }
   .skip { position: absolute; top: .75rem; left: .75rem; padding: .5rem 1rem; background: var(--tint); transform: translateY(-180%); }
-  .skip:focus { transform: none; z-index: 3; }
+  .skip:focus { transform: none; z-index: 4; }
 
 
 
@@ -94,16 +94,6 @@
   .impact dd { margin: .2rem 0 0; color: var(--muted); }
   .timeline p { color: var(--muted); margin-top: .25rem; }
   @media (max-width: 550px) { .impact { grid-template-columns: 1fr; gap: .6rem; } }
-  .floating-contact {
-    position: fixed;
-    z-index: 2;
-    right: max(1rem, env(safe-area-inset-right));
-    bottom: max(1rem, env(safe-area-inset-bottom));
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    box-shadow: 0 4px 18px #0005;
-  }
   body {
     background: radial-gradient(ellipse at 82% 0, #273264 0, transparent 46rem), var(--paper);
   }
@@ -122,7 +112,6 @@
   .result-bar span { background: linear-gradient(90deg, #91c5ff, #ceaeff); }
   .case { border-top: 2px solid #637fbb; }
   .case:nth-child(even) { border-top-color: #947cc1; }
-  .floating-contact { cursor: pointer; border: 0; font-family: inherit; background: #bed3ff; right: calc(1rem + env(safe-area-inset-right)); bottom: calc(1rem + env(safe-area-inset-bottom)); }
   @media (max-width: 550px) {
     .hero { padding-block: 2rem; }
     .section { padding-top: 2.3rem; }
@@ -133,11 +122,11 @@
     .project-filters[hidden] { display: none; }
     .case, .panel { padding: 1rem; }
   }
-  main { padding-bottom: 5rem; }
+  main { padding-bottom: 2rem; }
   .contact-panel {
-    position: fixed;
-    inset: auto calc(1rem + env(safe-area-inset-right)) calc(4.4rem + env(safe-area-inset-bottom)) auto;
-    width: min(24rem, calc(100% - 2rem - env(safe-area-inset-left) - env(safe-area-inset-right)));
+    position: absolute;
+    inset: calc(100% + .35rem) 0 auto auto;
+    width: min(24rem, calc(100vw - 2rem));
     max-height: calc(100dvh - 6rem);
     overflow: auto;
     margin: 0;
@@ -152,10 +141,34 @@
   .contact-panel p { color: var(--muted); }
   .contact-panel .actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1rem; margin-top: .8rem; }
   .contact-panel a { display: inline-flex; align-items: center; min-height: 44px; }
+  .site-top { border-bottom: 1px solid var(--line); }
+  .site-top-inner { display: flex; justify-content: flex-end; }
+  .contact-menu { position: relative; z-index: 3; }
+  .contact-menu summary { display: flex; align-items: center; gap: .45rem; min-height: 48px; color: var(--ink); font-weight: 700; cursor: pointer; list-style: none; }
+  .contact-menu summary::-webkit-details-marker { display: none; }
+  .contact-menu summary::after { content: ""; width: .38rem; height: .38rem; border: solid currentColor; border-width: 0 1px 1px 0; transform: translateY(-2px) rotate(45deg); }
+  .contact-menu[open] summary::after { transform: translateY(2px) rotate(225deg); }
+  .contact-menu summary:hover { color: var(--accent); }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<header class="site-top">
+  <div class="wrap site-top-inner">
+    <details class="contact-menu">
+      <summary data-click="contact-header">Contact</summary>
+      <section class="contact-panel" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Get in touch</h2>
+    <p>I'm based in Egypt and interested in on-site or hybrid Business Analyst and Product Owner roles in the UK or EU with employer-supported relocation.</p>
+    <div class="actions">
+      <a class="button" href="mailto:oelfky@gmail.com" data-click="contact-email">Email Omar</a>
+      <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin">LinkedIn</a>
+      <a href="https://github.com/elfekyjr" data-click="contact-github">GitHub</a>
+    </div>
+  </section>
+    </details>
+  </div>
+</header>
 <main id="main" tabindex="-1">
   <section class="hero wrap" aria-labelledby="portfolio-name">
     <h1 id="portfolio-name">Omar A. Elfeky</h1>
@@ -268,16 +281,7 @@
     </div>
   </section>
 
-  <button type="button" class="button floating-contact" popovertarget="contact" data-click="contact-floating">Contact</button>
-  <section class="contact-panel" id="contact" popover aria-labelledby="contact-title">
-    <h2 id="contact-title">Get in touch</h2>
-    <p>I'm based in Egypt and interested in on-site or hybrid Business Analyst and Product Owner roles in the UK or EU with employer-supported relocation.</p>
-    <div class="actions">
-      <a class="button" href="mailto:oelfky@gmail.com" data-click="contact-email">Email Omar</a>
-      <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin">LinkedIn</a>
-      <a href="https://github.com/elfekyjr" data-click="contact-github">GitHub</a>
-    </div>
-  </section>
+
 </main>
 <script>
   const filters = document.querySelector('.project-filters');
@@ -329,6 +333,13 @@
     });
   }
 
+  const contactMenu = document.querySelector('.contact-menu');
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && contactMenu.open) {
+      contactMenu.open = false;
+      if (contactMenu.contains(document.activeElement)) contactMenu.querySelector('summary').focus();
+    }
+  });
 </script>
 </body>
 </html>
