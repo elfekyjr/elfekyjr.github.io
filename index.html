@@ -26,7 +26,7 @@
   h1, h2, h3, p, figure { margin: 0; }
   a { color: inherit; text-underline-offset: .22em; }
   a:hover { color: var(--accent); }
-  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #aed4ff; outline-offset: 4px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #aed4ff; outline-offset: 4px; }
   section[id] { scroll-margin-top: 2rem; }
   .wrap { width: min(1120px, calc(100% - 3rem)); margin-inline: auto; }
   .skip { position: absolute; top: .75rem; left: .75rem; padding: .5rem 1rem; background: var(--tint); transform: translateY(-180%); }
@@ -44,11 +44,9 @@
   h3 { font-size: clamp(1.5rem, 2.75vw, 2.2rem); }
   .hero-role { color: var(--accent); font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 700; margin-bottom: .7rem; }
   .lede { max-width: 60ch; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--muted); }
-  .button { display: inline-block; border-radius: 6px; background: var(--accent); color: var(--paper); padding: .66rem 1rem; font-weight: 600; font-size: .875rem; text-decoration: none; }
-  .button:hover { color: var(--paper); background: #c1ddff; }
-  .section { padding-block: clamp(2.75rem, 6vw, 5rem); border-top: 1px solid var(--line); }
+  .section { padding-block: clamp(2.75rem, 6vw, 5rem); }
   .section h2 { margin-bottom: 1.55rem; }
-  .featured { display: grid; grid-template-columns: 1.12fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #142039; }
+  .featured { display: grid; grid-template-columns: 1.12fr 1fr; border-radius: 12px; overflow: hidden; background: #142039; }
   .panel { padding: clamp(1.25rem, 4vw, 2.65rem); }
   .panel h3 { margin: .55rem 0 .85rem; }
   .panel p + p { margin-top: .7rem; }
@@ -56,17 +54,15 @@
   .project-visual { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.25rem, 4vw, 2.65rem); color: #edf5ff; background: #1d3a63; }
   .project-visual strong { display: block; font: 700 clamp(3.8rem, 8vw, 6.5rem)/1 var(--sans); }
   .project-visual figcaption { margin-top: .65rem; }
-  .result-bar { height: .45rem; margin-top: 1.45rem; background: #48658e; border-radius: 9px; }
-  .result-bar span { display: block; width: 95%; height: 100%; border-radius: inherit; background: #85b9ff; }
   .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
-  .case { padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 12px; background: #142039; }
+  .case { padding: clamp(1.25rem, 3vw, 2rem); border-radius: 12px; background: #142039; }
   .case h3 { margin: .7rem 0 .85rem; }
   .case p + p:not(.result) { margin-top: .55rem; }
   .case .result { display: inline-block; margin: 1.1rem 0 .85rem; padding: .25rem .55rem; border-radius: 4px; background: var(--tint); color: var(--accent); font-weight: 700; font-size: .85rem; }
   .panel p:not(.label), .case p:not(.label), .about p { max-width: 65ch; }
   .columns { display: grid; grid-template-columns: 1.25fr .85fr; gap: clamp(1.5rem, 5vw, 5rem); }
   .timeline { list-style: none; padding: 0; margin: 0; }
-  .timeline li { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .timeline li { padding: .9rem 0; }
   .timeline li:first-child { padding-top: 0; }
   .timeline strong { display: block; }
   .timeline span, .about p, .about li { color: var(--muted); }
@@ -89,7 +85,7 @@
   .project-count:empty { display: none; }
   article[id] { scroll-margin-top: 1rem; }
   .impact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 900px; margin: 1.75rem 0 0; }
-  .impact div { padding: .85rem 1rem; border-left: 2px solid var(--accent); background: var(--tint); }
+  .impact div { padding: .85rem 1rem; background: var(--tint); }
   .impact dt { color: var(--accent); font-size: 2rem; font-weight: 700; line-height: 1.15; }
   .impact dd { margin: .2rem 0 0; color: var(--muted); }
   .timeline p { color: var(--muted); margin-top: .25rem; }
@@ -100,18 +96,14 @@
   .hero-role { color: #b6ceff; }
   .impact div {
     background: linear-gradient(145deg, #253b70, #1b2949);
-    border-left-color: #9ac8ff;
     border-radius: 8px;
   }
-  .impact div:nth-child(2) { background: linear-gradient(145deg, #382d66, #222749); border-left-color: #c8acff; }
+  .impact div:nth-child(2) { background: linear-gradient(145deg, #382d66, #222749); }
   .impact div:nth-child(2) dt { color: #ddcaff; }
-  .impact div:nth-child(3) { background: linear-gradient(145deg, #203e62, #1b2c49); border-left-color: #8fdbf5; }
+  .impact div:nth-child(3) { background: linear-gradient(145deg, #203e62, #1b2c49); }
   .impact div:nth-child(3) dt { color: #a5e9ff; }
   .impact dd { color: #e2ebff; }
   .project-visual { background: linear-gradient(145deg, #254b83, #302958); }
-  .result-bar span { background: linear-gradient(90deg, #91c5ff, #ceaeff); }
-  .case { border-top: 2px solid #637fbb; }
-  .case:nth-child(even) { border-top-color: #947cc1; }
   @media (max-width: 550px) {
     .hero { padding-block: 2rem; }
     .section { padding-top: 2.3rem; }
@@ -123,50 +115,24 @@
     .case, .panel { padding: 1rem; }
   }
   main { padding-bottom: 2rem; }
-  .contact-panel {
-    position: absolute;
-    inset: calc(100% + .35rem) 0 auto auto;
-    width: min(24rem, calc(100vw - 2rem));
-    max-height: calc(100dvh - 6rem);
-    overflow: auto;
-    margin: 0;
-    padding: 1.15rem;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--tint);
-    color: var(--ink);
-    box-shadow: 0 10px 35px #0006;
+  .contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem 1rem; padding-block: .65rem; }
+  .contact-row h2 { font-size: 1rem; }
+  .contact-row a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent); }
+  .contact-row p { margin-left: auto; color: var(--muted); font-size: .93rem; }
+  @media (max-width: 800px) {
+    .contact-row p { flex-basis: 100%; margin-left: 0; }
   }
-  .contact-panel h2 { font-size: 1.5rem; margin: 0 0 .5rem; }
-  .contact-panel p { color: var(--muted); }
-  .contact-panel .actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1rem; margin-top: .8rem; }
-  .contact-panel a { display: inline-flex; align-items: center; min-height: 44px; }
-  .site-top { border-bottom: 1px solid var(--line); }
-  .site-top-inner { display: flex; justify-content: flex-end; }
-  .contact-menu { position: relative; z-index: 3; }
-  .contact-menu summary { display: flex; align-items: center; gap: .45rem; min-height: 48px; color: var(--ink); font-weight: 700; cursor: pointer; list-style: none; }
-  .contact-menu summary::-webkit-details-marker { display: none; }
-  .contact-menu summary::after { content: ""; width: .38rem; height: .38rem; border: solid currentColor; border-width: 0 1px 1px 0; transform: translateY(-2px) rotate(45deg); }
-  .contact-menu[open] summary::after { transform: translateY(2px) rotate(225deg); }
-  .contact-menu summary:hover { color: var(--accent); }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-top">
-  <div class="wrap site-top-inner">
-    <details class="contact-menu">
-      <summary data-click="contact-header">Contact</summary>
-      <section class="contact-panel" id="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title">Get in touch</h2>
-    <p>I'm based in Egypt and interested in on-site or hybrid Business Analyst and Product Owner roles in the UK or EU with employer-supported relocation.</p>
-    <div class="actions">
-      <a class="button" href="mailto:oelfky@gmail.com" data-click="contact-email">Email Omar</a>
-      <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin">LinkedIn</a>
-      <a href="https://github.com/elfekyjr" data-click="contact-github">GitHub</a>
-    </div>
-  </section>
-    </details>
+  <div class="wrap contact-row" aria-label="Contact information">
+    <h2>Contact</h2>
+    <a href="mailto:oelfky@gmail.com" data-click="contact-email">Email</a>
+    <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin">LinkedIn</a>
+    <a href="https://github.com/elfekyjr" data-click="contact-github">GitHub</a>
+    <p>Based in Egypt · Seeking employer-supported UK or EU relocation for on-site or hybrid roles</p>
   </div>
 </header>
 <main id="main" tabindex="-1">
@@ -231,7 +197,7 @@
         </div>
         <figure class="project-visual">
           <figcaption><strong>95%</strong> On-time delivery across projects</figcaption>
-          <div class="result-bar" aria-hidden="true"><span></span></div>
+
         </figure>
       </article>
 
@@ -333,13 +299,6 @@
     });
   }
 
-  const contactMenu = document.querySelector('.contact-menu');
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && contactMenu.open) {
-      contactMenu.open = false;
-      if (contactMenu.contains(document.activeElement)) contactMenu.querySelector('summary').focus();
-    }
-  });
 </script>
 </body>
 </html>
