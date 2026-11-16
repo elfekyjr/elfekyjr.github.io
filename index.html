@@ -83,6 +83,17 @@
     .nav-links { gap: .5rem 1rem; }
     .featured, .cases, .columns { grid-template-columns: 1fr; }
   }
+  .project-filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .5rem; }
+  .project-filters button { background: transparent; color: var(--green); padding: .45rem .75rem; border: 1px solid var(--line); border-radius: 6px; font: 600 .875rem var(--sans); cursor: pointer; }
+  .project-filters button:hover { border-color: var(--green); }
+  .project-filters button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: white; }
+  [hidden] { display: none !important; }
+  .project-count { color: var(--muted); font-size: .85rem; margin-bottom: 1rem; }
+  .project-count:empty { display: none; }
+  .project-details { margin-top: 1rem; padding-top: .7rem; border-top: 1px solid var(--line); }
+  .project-details summary { width: fit-content; color: var(--green); font-size: .88rem; font-weight: 700; cursor: pointer; }
+  .project-details p { margin-top: .5rem; }
+  article[id] { scroll-margin-top: 1rem; }
 </style>
 </head>
 <body>
@@ -112,12 +123,19 @@
   <section class="section" id="projects" aria-labelledby="projects-title">
     <div class="wrap">
       <h2 id="projects-title">Selected projects</h2>
-      <article class="featured">
+      <div class="project-filters" role="group" aria-label="Filter projects" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">All projects</button>
+        <button type="button" data-filter="product" aria-pressed="false">Product delivery</button>
+        <button type="button" data-filter="analysis" aria-pressed="false">Business analysis</button>
+        <button type="button" data-filter="operations" aria-pressed="false">Service operations</button>
+      </div>
+      <p class="project-count" role="status"></p>
+      <article class="featured" data-project="product analysis">
         <div class="panel">
           <p class="label">NOVA Chemicals · Contract via FlairsTech</p>
           <h3>Internal web application revamps</h3>
           <p>I owned the product backlog for internal applications, turning requests into requirements and solution mockups. I coordinated priorities, sprint planning, and delivery with stakeholders and development teams across time zones.</p>
-          <p><strong>Methods:</strong> Requirements elicitation, backlog prioritisation, mockups, Agile/Scrum.</p>
+          <details class="project-details"><summary>Methods used</summary><p>Requirements elicitation, backlog prioritisation, solution mockups, and Agile/Scrum.</p></details>
         </div>
         <figure class="project-visual">
           <strong>95%</strong>
@@ -127,46 +145,46 @@
       </article>
 
       <div class="cases">
-        <article class="case" id="edafi">
+        <article class="case" data-project="product" id="edafi">
           <p class="label">AlasilaCX · Product development</p>
           <h3>Edafi</h3>
           <p>I created Edafi at AlasilaCX to help people take on extra work as contractors.</p>
-          <p>I designed the app around two groups: people looking for contract opportunities and people who need contractors.</p>
+          <details class="project-details"><summary>Who it was built for</summary><p>I designed the app around two groups: people looking for contract opportunities and people who need contractors.</p></details>
           <p class="result">Reached MVP stage</p>
         </article>
-        <article class="case" id="ticketing-system">
+        <article class="case" data-project="product operations" id="ticketing-system">
           <p class="label">AlasilaCX · Software modernisation</p>
           <h3>Ticketing system revamp</h3>
           <p>I contributed to the modernisation of an existing ticketing system at AlasilaCX.</p>
-          <p>The project moved the ticketing system from its legacy codebase to a new one.</p>
+          <details class="project-details"><summary>Modernisation scope</summary><p>The project moved the ticketing system from its legacy codebase to a new one.</p></details>
         </article>
-        <article class="case">
+        <article class="case" data-project="analysis">
           <p class="label">NOVA Chemicals · Requirements management</p>
           <h3>Reducing requirements rework</h3>
           <p>I built a requirements management framework that gave stakeholders and delivery teams a clearer way to agree what needed to be built.</p>
           <p class="result">30% fewer clarification cycles</p>
-          <p>Stakeholder alignment improved by 40%.</p>
+          <details class="project-details"><summary>Additional result</summary><p>Stakeholder alignment improved by 40%.</p></details>
         </article>
-        <article class="case">
+        <article class="case" data-project="analysis">
           <p class="label">NOVA Chemicals · Vendor evaluation</p>
           <h3>Build versus buy</h3>
           <p>I evaluated vendor options across regions against an internal build, helping the team choose how to meet the business need.</p>
           <p class="result">20% lower operating costs</p>
-          <p>The evaluation compared vendor options with building internally.</p>
+
         </article>
-        <article class="case">
+        <article class="case" data-project="product operations">
           <p class="label">Aspire Software · Customer implementation</p>
           <h3>SaaS onboarding and go-live</h3>
           <p>I translate customer requirements into configuration and workflow decisions, then coordinate onboarding, go-live, and handover to support.</p>
           <p class="result">3 implementation specialists led</p>
-          <p>I manage stakeholder communication, escalations, and service levels across time zones.</p>
+          <details class="project-details"><summary>What I manage</summary><p>Stakeholder communication, escalations, and service levels across time zones.</p></details>
         </article>
-        <article class="case">
+        <article class="case" data-project="operations">
           <p class="label">FlairsTech · Service operations</p>
           <h3>Support knowledge management</h3>
           <p>I built a knowledge management system while supervising a six-person support team and managing ticket queues, escalations, and service levels.</p>
           <p class="result">25% fewer support requests</p>
-          <p>Team ticket volume fell by 40% during my time as supervisor.</p>
+          <details class="project-details"><summary>Additional result</summary><p>Team ticket volume fell by 40% during my time as supervisor.</p></details>
         </article>
       </div>
     </div>
@@ -218,5 +236,38 @@
   </section>
 </main>
 <footer class="footer wrap">Omar A. Elfeky</footer>
+<script>
+  const filters = document.querySelector('.project-filters');
+  const buttons = [...filters.querySelectorAll('button')];
+  const projects = [...document.querySelectorAll('[data-project]')];
+  const count = document.querySelector('.project-count');
+
+  function showProjects(category) {
+    buttons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.filter === category));
+    });
+    projects.forEach(project => {
+      project.hidden = category !== 'all' && !project.dataset.project.split(' ').includes(category);
+    });
+    const visible = projects.filter(project => !project.hidden).length;
+    count.textContent = visible + (visible === 1 ? ' project' : ' projects');
+  }
+
+  filters.addEventListener('click', event => {
+    const button = event.target.closest('button[data-filter]');
+    if (button) showProjects(button.dataset.filter);
+  });
+
+  window.addEventListener('hashchange', () => {
+    const project = projects.find(card => card.id && '#' + card.id === location.hash);
+    if (project?.hidden) {
+      showProjects('all');
+      project.scrollIntoView();
+    }
+  });
+
+  filters.hidden = false;
+  showProjects('all');
+</script>
 </body>
 </html>
