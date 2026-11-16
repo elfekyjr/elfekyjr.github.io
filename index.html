@@ -29,18 +29,18 @@
   .wrap { width: min(1120px, calc(100% - 3rem)); margin-inline: auto; }
   .skip { position: absolute; top: .75rem; left: .75rem; padding: .5rem 1rem; background: var(--tint); transform: translateY(-180%); }
   .skip:focus { transform: none; z-index: 3; }
-  .site-header { border-bottom: 1px solid var(--line); }
-  .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .brand { font-weight: 700; text-decoration: none; letter-spacing: -.04em; }
-  .nav-links, .actions { display: flex; align-items: center; flex-wrap: wrap; gap: .85rem 1.5rem; }
-  .nav-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; text-decoration: none; }
-  .hero { padding-block: clamp(3.7rem, 8vw, 7rem) clamp(3rem, 7vw, 5rem); }
+
+
+
+
+
+  .hero { padding-block: clamp(2.75rem, 7vw, 5.5rem) clamp(3rem, 7vw, 5rem); }
   .label { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
   h1, h2, h3 { font-weight: 700; line-height: 1.12; }
-  h1 { max-width: 19ch; font-size: clamp(2.45rem, 6.5vw, 5.1rem); letter-spacing: -.035em; margin: .6rem 0 1.25rem; }
-  h1 em { color: var(--accent); font-style: normal; }
+  h1 { max-width: 19ch; font-size: clamp(2.45rem, 6.5vw, 5.1rem); letter-spacing: -.035em; margin: 0 0 .4rem; }
   h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.015em; }
   h3 { font-size: clamp(1.5rem, 2.75vw, 2.2rem); }
+  .hero-role { color: var(--accent); font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 700; margin-bottom: .7rem; }
   .lede { max-width: 60ch; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--muted); }
   .button { display: inline-block; border-radius: 6px; background: var(--accent); color: var(--paper); padding: .66rem 1rem; font-weight: 600; font-size: .875rem; text-decoration: none; }
   .button:hover { color: var(--paper); background: #c1ddff; }
@@ -72,12 +72,12 @@
   .about p + p { margin-top: .75rem; }
   .about ul { padding-left: 1.15rem; }
   .contact { background: var(--tint); }
-  .contact .actions { margin-top: 1.2rem; }
-  .footer { padding-block: 1.25rem; color: var(--muted); font-size: .85rem; }
+  .contact .actions { display: flex; align-items: center; flex-wrap: wrap; gap: .85rem 1.5rem; margin-top: 1.2rem; }
+
   @media (max-width: 700px) {
     .wrap { width: calc(100% - 2rem); }
-    .nav { min-height: 0; align-items: flex-start; flex-direction: column; justify-content: center; padding-block: .9rem; gap: .4rem; }
-    .nav-links { gap: .5rem 1rem; }
+
+
     .featured, .cases, .columns { grid-template-columns: 1fr; }
   }
   .project-filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .5rem; }
@@ -98,28 +98,17 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="nav wrap" aria-label="Main navigation">
-    <a class="brand" href="#main">Omar A. Elfeky</a>
-    <div class="nav-links">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
 <main id="main" tabindex="-1">
-  <header class="hero wrap">
-    <p class="label">Business Analyst &amp; Product Owner</p>
-    <h1>I turn business needs into <em>software teams can deliver.</em></h1>
-    <p class="lede">I'm Omar A. Elfeky, a Business Analyst and Product Owner with 5+ years in software delivery. I turn stakeholder needs into functional requirements, user stories, and prioritised backlogs. At Aspire Software, I lead SaaS implementations from discovery through go-live and handover.</p>
+  <section class="hero wrap" aria-labelledby="portfolio-name">
+    <h1 id="portfolio-name">Omar A. Elfeky</h1>
+    <p class="hero-role">Business Analyst &amp; Product Owner</p>
+    <p class="lede">I bring 5+ years in software delivery, turning stakeholder needs into functional requirements, user stories, and prioritised backlogs. At Aspire Software, I lead SaaS implementations from discovery through go-live and handover.</p>
     <dl class="impact" aria-label="Selected delivery results">
       <div><dt>95%</dt><dd>on-time delivery across NOVA Chemicals projects</dd></div>
       <div><dt>30%</dt><dd>fewer clarification cycles after introducing a requirements framework</dd></div>
       <div><dt>20%</dt><dd>lower operating costs through a build-versus-buy evaluation</dd></div>
     </dl>
-  </header>
+  </section>
 
   <section class="section" id="projects" aria-labelledby="projects-title">
     <div class="wrap">
@@ -233,7 +222,6 @@
     </div>
   </section>
 </main>
-<footer class="footer wrap">Omar A. Elfeky</footer>
 <script>
   const filters = document.querySelector('.project-filters');
   const buttons = [...filters.querySelectorAll('button')];
