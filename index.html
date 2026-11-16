@@ -105,7 +105,6 @@
     .project-filters[hidden] { display: none; }
   }
   main { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
-  .hero-location { color: var(--muted); margin-bottom: .45rem; font-size: .95rem; }
   .hero { padding-top: clamp(3.5rem, 9vw, 7rem); }
   h1 { letter-spacing: -.045em; }
   h2 { letter-spacing: -.025em; }
@@ -122,13 +121,14 @@
     gap: .3rem;
     padding: .3rem;
     border-radius: 999px;
-    background: #172640;
+    background: #243d66;
     box-shadow: 0 8px 30px #0007;
     pointer-events: auto;
   }
   @supports (backdrop-filter: blur(18px)) {
-    .contact-row { background: #172640df; backdrop-filter: blur(18px) saturate(150%); }
+    .contact-row { background: #243d66f2; backdrop-filter: blur(18px) saturate(150%); }
   }
+  #contact-label { align-self: center; padding-inline: .65rem .35rem; color: var(--ink); font-weight: 700; white-space: nowrap; }
   .contact-row a {
     display: grid;
     place-items: center;
@@ -147,7 +147,6 @@
 <main id="main" tabindex="-1">
   <section class="hero wrap" aria-labelledby="portfolio-name">
     <h1 id="portfolio-name">Omar A. Elfeky</h1>
-    <p class="hero-location">Based in Egypt · Seeking employer-supported UK or EU relocation for on-site or hybrid roles</p>
     <p class="hero-role">Business Analyst &amp; Product Owner</p>
     <p class="lede">I bring 5+ years in software delivery, turning stakeholder needs into functional requirements, user stories, and prioritised backlogs. At Aspire Software, I lead SaaS implementations from discovery through go-live and handover.</p>
     <dl class="impact" aria-label="Selected delivery results">
@@ -260,7 +259,8 @@
 
 </main>
 <div class="contact-dock">
-  <nav class="contact-row" aria-label="Contact">
+  <nav class="contact-row" aria-labelledby="contact-label">
+    <span id="contact-label">Contact me</span>
     <a href="mailto:oelfky@gmail.com" data-click="contact-email" aria-label="Email Omar" title="Email Omar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
         <rect x="3" y="5" width="18" height="14" rx="3"/>
