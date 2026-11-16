@@ -89,7 +89,7 @@
   .timeline p { color: var(--muted); margin-top: .25rem; }
   @media (max-width: 550px) { .impact { grid-template-columns: 1fr; gap: .6rem; } }
   body {
-    background: radial-gradient(ellipse at 82% 0, #273264 0, transparent 46rem), var(--paper);
+    background: radial-gradient(ellipse at 82% 0, #1a2e57 0, transparent 44rem), var(--paper);
   }
   .hero-role { color: #b6ceff; }
   .impact div:nth-child(2) dt { color: #ddcaff; }
@@ -104,23 +104,46 @@
     .project-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .project-filters[hidden] { display: none; }
   }
-  main { padding-bottom: 2rem; }
-  .contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem 1rem; padding-block: .65rem; }
-  .contact-row h2 { font-size: 1rem; }
-  .contact-row a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent); }
+  main { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
   .hero-location { color: var(--muted); margin-bottom: .45rem; font-size: .95rem; }
+  .hero { padding-top: clamp(3.5rem, 9vw, 7rem); }
+  h1 { letter-spacing: -.045em; }
+  h2 { letter-spacing: -.025em; }
+  .contact-dock {
+    position: fixed;
+    z-index: 2;
+    inset: auto 0 calc(1rem + env(safe-area-inset-bottom)) 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .contact-row {
+    display: flex;
+    gap: .3rem;
+    padding: .3rem;
+    border-radius: 999px;
+    background: #172640;
+    box-shadow: 0 8px 30px #0007;
+    pointer-events: auto;
+  }
+  @supports (backdrop-filter: blur(18px)) {
+    .contact-row { background: #172640df; backdrop-filter: blur(18px) saturate(150%); }
+  }
+  .contact-row a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: var(--ink);
+  }
+  .contact-row a:hover { background: #acc8ff26; color: var(--accent); }
+  .contact-row svg { width: 22px; height: 22px; }
+  @media (max-width: 550px) { .hero { padding-top: 2.75rem; } }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-top">
-  <div class="wrap contact-row" aria-label="Contact information">
-    <h2>Contact</h2>
-    <a href="mailto:oelfky@gmail.com" data-click="contact-email">Email</a>
-    <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin">LinkedIn</a>
-    <a href="https://github.com/elfekyjr" data-click="contact-github">GitHub</a>
-  </div>
-</header>
 <main id="main" tabindex="-1">
   <section class="hero wrap" aria-labelledby="portfolio-name">
     <h1 id="portfolio-name">Omar A. Elfeky</h1>
@@ -236,6 +259,21 @@
 
 
 </main>
+<div class="contact-dock">
+  <nav class="contact-row" aria-label="Contact">
+    <a href="mailto:oelfky@gmail.com" data-click="contact-email" aria-label="Email Omar" title="Email Omar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
+        <rect x="3" y="5" width="18" height="14" rx="3"/>
+        <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin" aria-label="Omar on LinkedIn" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+        <path d="M5.1 8.7h3V20h-3zM6.6 4a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM10.5 8.7h2.9v1.5c.7-1.1 1.7-1.7 3.1-1.7 2.6 0 3.8 1.7 3.8 4.4V20h-3v-6.2c0-1.6-.5-2.5-1.8-2.5-1.4 0-2 .9-2 2.5V20h-3z"/>
+      </svg>
+    </a>
+  </nav>
+</div>
 <script>
   const filters = document.querySelector('.project-filters');
   const buttons = [...filters.querySelectorAll('button')];
