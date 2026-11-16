@@ -24,7 +24,7 @@
   h1, h2, h3, p, figure { margin: 0; }
   a { color: inherit; text-underline-offset: .22em; }
   a:hover { color: var(--accent); }
-  a:focus-visible, summary:focus-visible { outline: 2px solid #aed4ff; outline-offset: 5px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #aed4ff; outline-offset: 4px; }
   section[id] { scroll-margin-top: 2rem; }
   .wrap { width: min(1120px, calc(100% - 3rem)); margin-inline: auto; }
   .skip { position: absolute; top: .75rem; left: .75rem; padding: .5rem 1rem; background: var(--tint); transform: translateY(-180%); }
@@ -33,7 +33,7 @@
   .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
   .brand { font-weight: 700; text-decoration: none; letter-spacing: -.04em; }
   .nav-links, .actions { display: flex; align-items: center; flex-wrap: wrap; gap: .85rem 1.5rem; }
-  .nav-links a { font-size: .875rem; font-weight: 600; text-decoration: none; }
+  .nav-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; text-decoration: none; }
   .hero { padding-block: clamp(3.7rem, 8vw, 7rem) clamp(3rem, 7vw, 5rem); }
   .label { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
   h1, h2, h3 { font-weight: 700; line-height: 1.12; }
@@ -42,7 +42,6 @@
   h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.015em; }
   h3 { font-size: clamp(1.5rem, 2.75vw, 2.2rem); }
   .lede { max-width: 60ch; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--muted); }
-  .hero .actions { margin-top: 1.7rem; }
   .button { display: inline-block; border-radius: 6px; background: var(--accent); color: var(--paper); padding: .66rem 1rem; font-weight: 600; font-size: .875rem; text-decoration: none; }
   .button:hover { color: var(--paper); background: #c1ddff; }
   .section { padding-block: clamp(2.75rem, 6vw, 5rem); border-top: 1px solid var(--line); }
@@ -72,7 +71,6 @@
   .about h3 { margin: 1.4rem 0 .55rem; font-size: 2rem; }
   .about p + p { margin-top: .75rem; }
   .about ul { padding-left: 1.15rem; }
-  .about summary { cursor: pointer; font-weight: 600; margin-top: 1rem; }
   .contact { background: var(--tint); }
   .contact .actions { margin-top: 1.2rem; }
   .footer { padding-block: 1.25rem; color: var(--muted); font-size: .85rem; }
@@ -83,15 +81,12 @@
     .featured, .cases, .columns { grid-template-columns: 1fr; }
   }
   .project-filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .5rem; }
-  .project-filters button { background: transparent; color: var(--accent); padding: .45rem .75rem; border: 1px solid var(--line); border-radius: 6px; font: 600 .875rem var(--sans); cursor: pointer; }
+  .project-filters button { min-height: 44px; background: transparent; color: var(--accent); padding: .45rem .75rem; border: 1px solid var(--line); border-radius: 6px; font: 600 .875rem var(--sans); cursor: pointer; }
   .project-filters button:hover { border-color: var(--accent); }
   .project-filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
   [hidden] { display: none !important; }
   .project-count { color: var(--muted); font-size: .85rem; margin-bottom: 1rem; }
   .project-count:empty { display: none; }
-  .project-details { margin-top: 1rem; padding-top: .7rem; border-top: 1px solid var(--line); }
-  .project-details summary { width: fit-content; color: var(--accent); font-size: .88rem; font-weight: 700; cursor: pointer; }
-  .project-details p { margin-top: .5rem; }
   article[id] { scroll-margin-top: 1rem; }
 </style>
 </head>
@@ -108,15 +103,11 @@
     </div>
   </nav>
 </header>
-<main id="main">
+<main id="main" tabindex="-1">
   <header class="hero wrap">
     <p class="label">Business Analyst &amp; Product Owner</p>
     <h1>I turn unclear requests into <em>work teams can ship.</em></h1>
     <p class="lede">I'm Omar A. Elfeky. I work with stakeholders and software teams to define requirements, prioritise backlogs, and deliver software through go-live.</p>
-    <div class="actions">
-      <a class="button" href="#projects">View projects</a>
-      <a href="https://www.linkedin.com/in/elfekyjr/">LinkedIn</a>
-    </div>
   </header>
 
   <section class="section" id="projects" aria-labelledby="projects-title">
@@ -134,11 +125,10 @@
           <p class="label">NOVA Chemicals · Contract via FlairsTech</p>
           <h3>Internal web application revamps</h3>
           <p>I owned the product backlog for internal applications, turning requests into requirements and solution mockups. I coordinated priorities, sprint planning, and delivery with stakeholders and development teams across time zones.</p>
-          <details class="project-details"><summary>Methods used</summary><p>Requirements elicitation, backlog prioritisation, solution mockups, and Agile/Scrum.</p></details>
+          <p>Requirements elicitation, backlog prioritisation, solution mockups, and Agile/Scrum.</p>
         </div>
         <figure class="project-visual">
-          <strong>95%</strong>
-          <figcaption>On-time delivery across projects</figcaption>
+          <figcaption><strong>95%</strong> On-time delivery across projects</figcaption>
           <div class="result-bar" aria-hidden="true"><span></span></div>
         </figure>
       </article>
@@ -148,21 +138,21 @@
           <p class="label">AlasilaCX · Product development</p>
           <h3>Edafi</h3>
           <p>I created Edafi at AlasilaCX to help people take on extra work as contractors.</p>
-          <details class="project-details"><summary>Who it was built for</summary><p>I designed the app around two groups: people looking for contract opportunities and people who need contractors.</p></details>
+          <p>I designed the app around two groups: people looking for contract opportunities and people who need contractors.</p>
           <p class="result">Reached MVP stage</p>
         </article>
         <article class="case" data-project="product operations" id="ticketing-system">
           <p class="label">AlasilaCX · Software modernisation</p>
           <h3>Ticketing system revamp</h3>
           <p>I contributed to the modernisation of an existing ticketing system at AlasilaCX.</p>
-          <details class="project-details"><summary>Modernisation scope</summary><p>The project moved the ticketing system from its legacy codebase to a new one.</p></details>
+          <p>The project moved the ticketing system from its legacy codebase to a new one.</p>
         </article>
         <article class="case" data-project="analysis">
           <p class="label">NOVA Chemicals · Requirements management</p>
           <h3>Reducing requirements rework</h3>
           <p>I built a requirements management framework that gave stakeholders and delivery teams a clearer way to agree what needed to be built.</p>
           <p class="result">30% fewer clarification cycles</p>
-          <details class="project-details"><summary>Additional result</summary><p>Stakeholder alignment improved by 40%.</p></details>
+          <p>Stakeholder alignment improved by 40%.</p>
         </article>
         <article class="case" data-project="analysis">
           <p class="label">NOVA Chemicals · Vendor evaluation</p>
@@ -176,14 +166,14 @@
           <h3>SaaS onboarding and go-live</h3>
           <p>I translate customer requirements into configuration and workflow decisions, then coordinate onboarding, go-live, and handover to support.</p>
           <p class="result">3 implementation specialists led</p>
-          <details class="project-details"><summary>What I manage</summary><p>Stakeholder communication, escalations, and service levels across time zones.</p></details>
+          <p>Stakeholder communication, escalations, and service levels across time zones.</p>
         </article>
         <article class="case" data-project="operations">
           <p class="label">FlairsTech · Service operations</p>
           <h3>Support knowledge management</h3>
           <p>I built a knowledge management system while supervising a six-person support team and managing ticket queues, escalations, and service levels.</p>
           <p class="result">25% fewer support requests</p>
-          <details class="project-details"><summary>Additional result</summary><p>Team ticket volume fell by 40% during my time as supervisor.</p></details>
+          <p>Team ticket volume fell by 40% during my time as supervisor.</p>
         </article>
       </div>
     </div>
@@ -208,16 +198,14 @@
         <p>Requirements elicitation, stakeholder management, story mapping, acceptance criteria, BPMN, UAT, Agile/Scrum, Jira, Confluence, SQL, Power BI, and Tableau.</p>
         <h3>Education</h3>
         <p>Bachelor's in Business Administration and Management, Al-Azhar University, Cairo.</p>
-        <details>
-          <summary>Certifications and training</summary>
-          <ul>
+        <h3>Certifications and training</h3>
+        <ul>
             <li>Business Analysis Foundations</li>
             <li>Product Management: Initial Product Strategy and Plan</li>
             <li>Share Data Through the Art of Visualization</li>
             <li>Foundations: Data, Data, Everywhere</li>
             <li>Analyze Data to Answer Questions</li>
           </ul>
-        </details>
       </div>
     </div>
   </section>
