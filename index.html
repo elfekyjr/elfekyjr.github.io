@@ -45,7 +45,8 @@
   .hero-role { color: var(--accent); font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 700; margin-bottom: .7rem; }
   .lede { max-width: 60ch; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--muted); }
   .section { padding-block: clamp(2.75rem, 6vw, 5rem); }
-  .section h2 { margin-bottom: 1.55rem; }
+  #experience { background: linear-gradient(180deg, transparent, #91b9ff0a 22%, #91b9ff0a 78%, transparent); }
+  .section h2 { margin-bottom: clamp(1.15rem, 2.5vw, 1.55rem); }
   .featured { display: grid; grid-template-columns: 1.12fr 1fr; column-gap: clamp(1rem, 4vw, 3rem); }
   .panel h3 { margin: .55rem 0 .85rem; }
   .panel p + p { margin-top: .7rem; }
@@ -97,7 +98,8 @@
   .impact dd { color: #e2ebff; }
   @media (max-width: 550px) {
     .hero { padding-block: 2rem; }
-    .section { padding-top: 2.3rem; }
+    .section { padding-block: 2.65rem; }
+    .columns { row-gap: 2.4rem; }
     .impact div { display: grid; grid-template-columns: 4rem minmax(0, 1fr); align-items: center; gap: .7rem; padding: .35rem 0; }
     .impact dt { font-size: 1.7rem; }
     .impact dd { margin: 0; line-height: 1.35; }
