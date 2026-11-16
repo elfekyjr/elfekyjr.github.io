@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Omar A. Elfeky, Business Analyst and Product Owner. Selected work in requirements management, product delivery and SaaS implementation.">
+<!-- Set content to your GoatCounter subdomain to enable analytics. -->
+<meta name="goatcounter-site" content="">
 <title>Omar A. Elfeky | Business Analyst &amp; Product Owner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,6 +96,46 @@
   .impact dd { margin: .2rem 0 0; color: var(--muted); }
   .timeline p { color: var(--muted); margin-top: .25rem; }
   @media (max-width: 550px) { .impact { grid-template-columns: 1fr; gap: .6rem; } }
+  .floating-contact {
+    position: fixed;
+    z-index: 2;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    box-shadow: 0 4px 18px #0005;
+  }
+  .contact { padding-bottom: max(5rem, calc(env(safe-area-inset-bottom) + 4rem)); }
+  body {
+    background: radial-gradient(ellipse at 82% 0, #273264 0, transparent 46rem), var(--paper);
+  }
+  .hero-role { color: #b6ceff; }
+  .impact div {
+    background: linear-gradient(145deg, #253b70, #1b2949);
+    border-left-color: #9ac8ff;
+    border-radius: 8px;
+  }
+  .impact div:nth-child(2) { background: linear-gradient(145deg, #382d66, #222749); border-left-color: #c8acff; }
+  .impact div:nth-child(2) dt { color: #ddcaff; }
+  .impact div:nth-child(3) { background: linear-gradient(145deg, #203e62, #1b2c49); border-left-color: #8fdbf5; }
+  .impact div:nth-child(3) dt { color: #a5e9ff; }
+  .impact dd { color: #e2ebff; }
+  .project-visual { background: linear-gradient(145deg, #254b83, #302958); }
+  .result-bar span { background: linear-gradient(90deg, #91c5ff, #ceaeff); }
+  .case { border-top: 2px solid #637fbb; }
+  .case:nth-child(even) { border-top-color: #947cc1; }
+  .floating-contact { background: #bed3ff; right: calc(1rem + env(safe-area-inset-right)); bottom: calc(1rem + env(safe-area-inset-bottom)); }
+  @media (max-width: 550px) {
+    .hero { padding-block: 2rem; }
+    .section { padding-top: 2.3rem; }
+    .impact div { display: grid; grid-template-columns: 4rem minmax(0, 1fr); align-items: center; gap: .7rem; padding: .65rem .7rem; }
+    .impact dt { font-size: 1.7rem; }
+    .impact dd { margin: 0; line-height: 1.35; }
+    .project-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project-filters[hidden] { display: none; }
+    .case, .panel { padding: 1rem; }
+  }
 </style>
 </head>
 <body>
@@ -108,6 +150,37 @@
       <div><dt>30%</dt><dd>fewer clarification cycles after introducing a requirements framework</dd></div>
       <div><dt>20%</dt><dd>lower operating costs through a build-versus-buy evaluation</dd></div>
     </dl>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="wrap columns">
+      <div>
+        <h2 id="experience-title">Experience</h2>
+        <ul class="timeline">
+          <li><strong>Customer Implementation Manager</strong><span>Aspire Software · Feb 2026–Present</span><p>Own customer requirements, configuration decisions, and implementation from onboarding through handover.</p></li>
+          <li><strong>Business Analyst</strong><span>AlasilaCX · Oct 2025–Jan 2026</span><p>Translated stakeholder needs into functional specs, user stories, and acceptance criteria. Prioritised the Jira backlog by customer impact and business value.</p></li>
+          <li><strong>Business Analyst / Product Owner</strong><span>FlairsTech · Aug 2023–Sep 2025</span><br><span>Includes the NOVA Chemicals contract · Jul 2024–Sep 2025</span><p>Mapped workflows in BPMN, validated data with SQL, coordinated user acceptance testing, and reported delivery KPIs in Power BI.</p></li>
+          <li><strong>Technical Support Supervisor</strong><span>FlairsTech · Oct 2021–Aug 2023</span></li>
+          <li><strong>Technical Support Engineer</strong><span>FlairsTech · Nov 2020–Oct 2021</span></li>
+        </ul>
+      </div>
+      <div class="about" id="about">
+        <h2>About</h2>
+        <p>I have 5+ years in software delivery, including 2.5+ years in business analysis and product ownership, working with teams in Canada, Australia, and Egypt.</p>
+        <h3>Skills</h3>
+        <p>Requirements elicitation, stakeholder management, story mapping, acceptance criteria, BPMN, UAT, Agile/Scrum, Jira, Confluence, SQL, Power BI, and Tableau.</p>
+        <h3>Education</h3>
+        <p>Bachelor's in Business Administration and Management, Al-Azhar University, Cairo.</p>
+        <h3>Certifications and training</h3>
+        <ul>
+            <li>Business Analysis Foundations</li>
+            <li>Product Management: Initial Product Strategy and Plan</li>
+            <li>Share Data Through the Art of Visualization</li>
+            <li>Foundations: Data, Data, Everywhere</li>
+            <li>Analyze Data to Answer Questions</li>
+          </ul>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="projects" aria-labelledby="projects-title">
@@ -179,48 +252,18 @@
     </div>
   </section>
 
-  <section class="section" id="experience" aria-labelledby="experience-title">
-    <div class="wrap columns">
-      <div>
-        <h2 id="experience-title">Experience</h2>
-        <ul class="timeline">
-          <li><strong>Customer Implementation Manager</strong><span>Aspire Software · Feb 2026–Present</span><p>Own customer requirements, configuration decisions, and implementation from onboarding through handover.</p></li>
-          <li><strong>Business Analyst</strong><span>AlasilaCX · Oct 2025–Jan 2026</span><p>Translated stakeholder needs into functional specs, user stories, and acceptance criteria. Prioritised the Jira backlog by customer impact and business value.</p></li>
-          <li><strong>Business Analyst / Product Owner</strong><span>FlairsTech · Aug 2023–Sep 2025</span><br><span>Includes the NOVA Chemicals contract · Jul 2024–Sep 2025</span><p>Mapped workflows in BPMN, validated data with SQL, coordinated user acceptance testing, and reported delivery KPIs in Power BI.</p></li>
-          <li><strong>Technical Support Supervisor</strong><span>FlairsTech · Oct 2021–Aug 2023</span></li>
-          <li><strong>Technical Support Engineer</strong><span>FlairsTech · Nov 2020–Oct 2021</span></li>
-        </ul>
-      </div>
-      <div class="about" id="about">
-        <h2>About</h2>
-        <p>I have 5+ years in software delivery, including 2.5+ years in business analysis and product ownership, working with teams in Canada, Australia, and Egypt.</p>
-        <h3>Skills</h3>
-        <p>Requirements elicitation, stakeholder management, story mapping, acceptance criteria, BPMN, UAT, Agile/Scrum, Jira, Confluence, SQL, Power BI, and Tableau.</p>
-        <h3>Education</h3>
-        <p>Bachelor's in Business Administration and Management, Al-Azhar University, Cairo.</p>
-        <h3>Certifications and training</h3>
-        <ul>
-            <li>Business Analysis Foundations</li>
-            <li>Product Management: Initial Product Strategy and Plan</li>
-            <li>Share Data Through the Art of Visualization</li>
-            <li>Foundations: Data, Data, Everywhere</li>
-            <li>Analyze Data to Answer Questions</li>
-          </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section contact" id="contact" aria-labelledby="contact-title">
+  <section class="section contact" id="contact" tabindex="-1" aria-labelledby="contact-title">
     <div class="wrap">
       <h2 id="contact-title">Get in touch</h2>
       <p class="lede">I'm based in Egypt and interested in on-site or hybrid Business Analyst and Product Owner roles in the UK or EU with employer-supported relocation.</p>
       <div class="actions">
-        <a class="button" href="mailto:oelfky@gmail.com">Email Omar</a>
-        <a href="https://www.linkedin.com/in/elfekyjr/">LinkedIn</a>
-        <a href="https://github.com/elfekyjr">GitHub</a>
+        <a class="button" href="mailto:oelfky@gmail.com" data-click="contact-email">Email Omar</a>
+        <a href="https://www.linkedin.com/in/elfekyjr/" data-click="contact-linkedin">LinkedIn</a>
+        <a href="https://github.com/elfekyjr" data-click="contact-github">GitHub</a>
       </div>
     </div>
   </section>
+  <a href="#contact" class="button floating-contact" data-click="contact-floating">Contact</a>
 </main>
 <script>
   const filters = document.querySelector('.project-filters');
@@ -254,6 +297,32 @@
 
   filters.hidden = false;
   showProjects('all');
+
+  // Analytics are inactive until a GoatCounter site is configured.
+  const analyticsSite = document.querySelector('meta[name="goatcounter-site"]').content.trim();
+  if (/^[a-z0-9][a-z0-9-]*$/.test(analyticsSite)) {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://gc.zgo.at/count.js';
+    script.dataset.goatcounter = 'https://' + analyticsSite + '.goatcounter.com/count';
+    document.head.append(script);
+
+    document.addEventListener('click', event => {
+      const target = event.target.closest('[data-click], button[data-filter]');
+      if (!target) return;
+      const name = target.dataset.click || 'project-filter-' + target.dataset.filter;
+      window.goatcounter?.count?.({ path: name, title: name, event: true });
+    });
+  }
+
+  const contactShortcut = document.querySelector('.floating-contact');
+  const contactSection = document.getElementById('contact');
+  if ('IntersectionObserver' in window) {
+    const contactObserver = new IntersectionObserver(entries => {
+      contactShortcut.hidden = entries[0].isIntersecting;
+    }, { threshold: 0.5 });
+    contactObserver.observe(contactSection);
+  }
 </script>
 </body>
 </html>
