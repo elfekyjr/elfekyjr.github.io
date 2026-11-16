@@ -88,6 +88,12 @@
   .project-count { color: var(--muted); font-size: .85rem; margin-bottom: 1rem; }
   .project-count:empty { display: none; }
   article[id] { scroll-margin-top: 1rem; }
+  .impact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 900px; margin: 1.75rem 0 0; }
+  .impact div { padding: .85rem 1rem; border-left: 2px solid var(--accent); background: var(--tint); }
+  .impact dt { color: var(--accent); font-size: 2rem; font-weight: 700; line-height: 1.15; }
+  .impact dd { margin: .2rem 0 0; color: var(--muted); }
+  .timeline p { color: var(--muted); margin-top: .25rem; }
+  @media (max-width: 550px) { .impact { grid-template-columns: 1fr; gap: .6rem; } }
 </style>
 </head>
 <body>
@@ -106,8 +112,13 @@
 <main id="main" tabindex="-1">
   <header class="hero wrap">
     <p class="label">Business Analyst &amp; Product Owner</p>
-    <h1>I turn unclear requests into <em>work teams can ship.</em></h1>
-    <p class="lede">I'm Omar A. Elfeky. I work with stakeholders and software teams to define requirements, prioritise backlogs, and deliver software through go-live.</p>
+    <h1>I turn business needs into <em>software teams can deliver.</em></h1>
+    <p class="lede">I'm Omar A. Elfeky, a Business Analyst and Product Owner with 5+ years in software delivery. I turn stakeholder needs into functional requirements, user stories, and prioritised backlogs. At Aspire Software, I lead SaaS implementations from discovery through go-live and handover.</p>
+    <dl class="impact" aria-label="Selected delivery results">
+      <div><dt>95%</dt><dd>on-time delivery across NOVA Chemicals projects</dd></div>
+      <div><dt>30%</dt><dd>fewer clarification cycles after introducing a requirements framework</dd></div>
+      <div><dt>20%</dt><dd>lower operating costs through a build-versus-buy evaluation</dd></div>
+    </dl>
   </header>
 
   <section class="section" id="projects" aria-labelledby="projects-title">
@@ -124,8 +135,8 @@
         <div class="panel">
           <p class="label">NOVA Chemicals · Contract via FlairsTech</p>
           <h3>Internal web application revamps</h3>
-          <p>I owned the product backlog for internal applications, turning requests into requirements and solution mockups. I coordinated priorities, sprint planning, and delivery with stakeholders and development teams across time zones.</p>
-          <p>Requirements elicitation, backlog prioritisation, solution mockups, and Agile/Scrum.</p>
+          <p><strong>My role.</strong> I owned the product backlog for the internal web application revamps, clarified stakeholder requests, documented requirements, and created solution mockups.</p>
+          <p><strong>How I delivered.</strong> I prioritised requests, facilitated sprint planning and Agile ceremonies, and coordinated delivery with stakeholders and development teams across time zones.</p>
         </div>
         <figure class="project-visual">
           <figcaption><strong>95%</strong> On-time delivery across projects</figcaption>
@@ -137,15 +148,15 @@
         <article class="case" data-project="product" id="edafi">
           <p class="label">AlasilaCX · Product development</p>
           <h3>Edafi</h3>
-          <p>I created Edafi at AlasilaCX to help people take on extra work as contractors.</p>
-          <p>I designed the app around two groups: people looking for contract opportunities and people who need contractors.</p>
+          <p><strong>My role.</strong> I created Edafi at AlasilaCX for people seeking extra work as contractors.</p>
+          <p><strong>Product scope.</strong> The app connects people looking for contract opportunities with people who need contractors.</p>
           <p class="result">Reached MVP stage</p>
         </article>
         <article class="case" data-project="product operations" id="ticketing-system">
           <p class="label">AlasilaCX · Software modernisation</p>
           <h3>Ticketing system revamp</h3>
-          <p>I contributed to the modernisation of an existing ticketing system at AlasilaCX.</p>
-          <p>The project moved the ticketing system from its legacy codebase to a new one.</p>
+          <p><strong>My role.</strong> I contributed to the project as a Business Analyst at AlasilaCX.</p>
+          <p><strong>Project scope.</strong> The team moved an existing ticketing system from its legacy codebase to a new one.</p>
         </article>
         <article class="case" data-project="analysis">
           <p class="label">NOVA Chemicals · Requirements management</p>
@@ -165,15 +176,15 @@
           <p class="label">Aspire Software · Customer implementation</p>
           <h3>SaaS onboarding and go-live</h3>
           <p>I translate customer requirements into configuration and workflow decisions, then coordinate onboarding, go-live, and handover to support.</p>
-          <p class="result">3 implementation specialists led</p>
-          <p>Stakeholder communication, escalations, and service levels across time zones.</p>
+          <p class="result">Lead 3 implementation specialists</p>
+          <p>I coordinate stakeholder communication, escalations, and service levels across time zones.</p>
         </article>
         <article class="case" data-project="operations">
           <p class="label">FlairsTech · Service operations</p>
           <h3>Support knowledge management</h3>
           <p>I built a knowledge management system while supervising a six-person support team and managing ticket queues, escalations, and service levels.</p>
           <p class="result">25% fewer support requests</p>
-          <p>Team ticket volume fell by 40% during my time as supervisor.</p>
+          <p>As supervisor, I also reduced ticket volume by 40% and introduced KPIs that improved team performance by 35%.</p>
         </article>
       </div>
     </div>
@@ -184,9 +195,9 @@
       <div>
         <h2 id="experience-title">Experience</h2>
         <ul class="timeline">
-          <li><strong>Customer Implementation Manager</strong><span>Aspire Software · Feb 2026–Present</span></li>
-          <li><strong>Business Analyst</strong><span>AlasilaCX · Oct 2025–Jan 2026</span></li>
-          <li><strong>Business Analyst / Product Owner</strong><span>FlairsTech · Aug 2023–Sep 2025</span><br><span>Includes the NOVA Chemicals contract · Jul 2024–Sep 2025</span></li>
+          <li><strong>Customer Implementation Manager</strong><span>Aspire Software · Feb 2026–Present</span><p>Own customer requirements, configuration decisions, and implementation from onboarding through handover.</p></li>
+          <li><strong>Business Analyst</strong><span>AlasilaCX · Oct 2025–Jan 2026</span><p>Translated stakeholder needs into functional specs, user stories, and acceptance criteria. Prioritised the Jira backlog by customer impact and business value.</p></li>
+          <li><strong>Business Analyst / Product Owner</strong><span>FlairsTech · Aug 2023–Sep 2025</span><br><span>Includes the NOVA Chemicals contract · Jul 2024–Sep 2025</span><p>Mapped workflows in BPMN, validated data with SQL, coordinated user acceptance testing, and reported delivery KPIs in Power BI.</p></li>
           <li><strong>Technical Support Supervisor</strong><span>FlairsTech · Oct 2021–Aug 2023</span></li>
           <li><strong>Technical Support Engineer</strong><span>FlairsTech · Nov 2020–Oct 2021</span></li>
         </ul>
